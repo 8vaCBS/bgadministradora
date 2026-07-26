@@ -1,0 +1,28 @@
+{
+  "name": "bgadministradora",
+  "version": "1.0.0",
+  "description": "BG Administradora Inmobiliaria - Gestión de Condominios y Edificios en Chile",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/8vaCBS/bgadministradora.git"
+  },
+  "keywords": [
+    "administracion",
+    "condominios",
+    "chile",
+    "inmobiliaria"
+  ],
+  "author": "BG Administradora Inmobiliaria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/8vaCBS/bgadministradora/issues"
+  },
+  "homepage": "https://github.com/8vaCBS/bgadministradora#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
