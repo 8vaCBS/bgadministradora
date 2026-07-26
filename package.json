@@ -1,0 +1,14 @@
+{
+  "name": "bgadministradora",
+  "version": "1.0.0",
+  "description": "BG Administradora Inmobiliaria - Gestión de Condominios y Edificios",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static HTML - no build required'",
+    "lint": "echo 'No linter configured for static HTML'"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
