@@ -347,7 +347,7 @@
 
         // Generar Código QR de la URL actual o fallback
         window.addEventListener('load', function() {
-            const currentUrl = window.location.href.startsWith('http') ? window.location.href : 'https://www.bgadministradora.cl';
+            const currentUrl = window.location.href.startsWith('http') ? window.location.href : 'https://www.bgadministradora.cl/tarjeta';
             
             new QRCode(document.getElementById("qrcode"), {
                 text: currentUrl,
