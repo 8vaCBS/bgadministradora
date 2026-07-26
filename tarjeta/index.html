@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-slate-200">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bárbara Gutiérrez Cortes | Tarjeta Virtual Ejecutiva</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgRed: {
+                            DEFAULT: '#C8102E',
+                            dark: '#9E0B22',
+                            light: '#E63946',
+                            soft: '#FFF5F5'
+                        },
+                        bgDark: '#0F172A',
+                        bgSlate: '#1E293B',
+                        gysBlue: '#0A4D9A',
+                        strataTech: '#0D1424'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- QRCode JS Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            background-color: #0F172A;
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .card-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 30px rgba(200, 16, 46, 0.15);
+        }
+        .gold-border {
+            border: 3px solid #D4AF37;
+            background: linear-gradient(135deg, #fff 0%, #fcf8f2 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="min-h-screen py-0 sm:py-6 px-0 sm:px-4 flex justify-center items-center">
+
+    <!-- Contenedor Principal Estilo Smartphone Card -->
+    <main class="w-full max-w-md bg-white sm:rounded-[40px] card-shadow overflow-hidden min-h-screen sm:min-h-0 relative flex flex-col justify-between border border-slate-700/30">
+        
+        <!-- Header Corporativo Elegante BG con Curva Arc Superior -->
+        <div class="relative bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white pt-6 pb-8 px-6 text-center rounded-b-[36px] shadow-lg overflow-hidden">
+            <!-- Barra Superior Roja BG -->
+            <div class="absolute top-0 left-0 right-0 h-2 bg-bgRed"></div>
+            
+            <!-- Botón flotante QR rápido -->
+            <button onclick="toggleModal('qrModal')" title="Ver mi Código QR" class="absolute top-4 right-4 bg-slate-800/80 hover:bg-bgRed text-white p-2.5 rounded-full transition-all border border-slate-700 flex items-center justify-center text-xs shadow-md">
+                <i class="fa-solid fa-qrcode text-base"></i>
+            </button>
+
+            <!-- Logo Oficial BG Administradora -->
+            <div class="w-24 h-14 mx-auto mb-2 flex items-center justify-center">
+                <svg viewBox="0 0 300 180" class="w-full h-full filter drop-shadow">
+                    <path d="M 30,90 L 130,20 L 230,90 L 195,90 L 130,45 L 65,90 Z" fill="#C8102E" />
+                    <path d="M 165,38 L 265,90 L 235,90 L 165,52 Z" fill="#FFFFFF" />
+                    <rect x="118" y="62" width="7" height="7" fill="#FFFFFF" />
+                    <rect x="131" y="62" width="7" height="7" fill="#FFFFFF" />
+                    <rect x="118" y="73" width="7" height="7" fill="#FFFFFF" />
+                    <rect x="131" y="73" width="7" height="7" fill="#FFFFFF" />
+                    <text x="105" y="132" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="38" fill="#FFFFFF">B<tspan fill="#C8102E">G</tspan></text>
+                    <text x="150" y="156" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">ADMINISTRADORA</text>
+                    <text x="150" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#94A3B8" text-anchor="middle" letter-spacing="3">INMOBILIARIA</text>
+                </svg>
+            </div>
+
+            <!-- Foto de Perfil de Bárbara Gutiérrez (Con marco dorado/rojo) -->
+            <div class="relative w-32 h-32 mx-auto my-3">
+                <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-bgRed via-amber-400 to-bgRed p-1 shadow-xl">
+                    <div class="w-full h-full rounded-full overflow-hidden bg-slate-800 border-2 border-white">
+                        <img src="https://cdn.shopify.com/s/files/1/0773/9683/6592/files/Diseno_sin_titulo_9.png?v=1784934146" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0F172A/FFFFFF?text=B%C3%A1rbara+Guti%C3%A9rrez';" alt="Bárbara Gutiérrez Cortes" class="w-full h-full object-cover object-top">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nombre & Cargo -->
+            <h1 class="text-2xl font-extrabold tracking-tight text-white mt-2">
+                Bárbara Gutiérrez Cortes
+            </h1>
+            <p class="text-bgRed-light font-bold text-xs uppercase tracking-widest mt-1">
+                Fundadora & CEO
+            </p>
+            <p class="text-xs text-slate-300 font-medium mt-1">
+                BG Administración Inmobiliaria
+            </p>
+
+            <!-- Lema / Propuesta de Valor -->
+            <div class="mt-3 inline-block bg-slate-800/90 text-amber-200 text-[11px] px-3.5 py-1.5 rounded-full border border-amber-500/30 font-medium shadow-inner">
+                <i class="fa-solid fa-gem text-amber-400 mr-1 text-[10px]"></i>
+                Gestionamos tu inversión, cuidamos tu patrimonio
+            </div>
+        </div>
+
+        <div class="px-5 -mt-5 space-y-5 flex-1 bg-slate-50 relative z-10 pb-6">
+
+            <!-- Botones Rápidos de Acción Estilo Píldoras Executivas -->
+            <div class="grid grid-cols-4 gap-2 bg-white p-2.5 rounded-2xl shadow-md border border-slate-200/80 text-center">
+                <a href="tel:+56981749481" class="flex flex-col items-center p-2 rounded-xl hover:bg-slate-50 transition-colors group">
+                    <div class="w-10 h-10 rounded-full bg-slate-900 group-hover:bg-bgRed text-white flex items-center justify-center text-sm transition-colors shadow-sm mb-1">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <span class="text-[10px] font-bold text-slate-700">Llamar</span>
+                </a>
+
+                <a href="https://wa.me/56981749481?text=Hola%20B%C3%A1rbara,%20me%20contacto%20desde%20tu%20tarjeta%20digital." target="_blank" class="flex flex-col items-center p-2 rounded-xl hover:bg-slate-50 transition-colors group">
+                    <div class="w-10 h-10 rounded-full bg-emerald-600 group-hover:bg-emerald-700 text-white flex items-center justify-center text-sm transition-colors shadow-sm mb-1">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                    </div>
+                    <span class="text-[10px] font-bold text-slate-700">WhatsApp</span>
+                </a>
+
+                <a href="mailto:barbaragc@bgadministradora.cl" class="flex flex-col items-center p-2 rounded-xl hover:bg-slate-50 transition-colors group">
+                    <div class="w-10 h-10 rounded-full bg-slate-900 group-hover:bg-bgRed text-white flex items-center justify-center text-sm transition-colors shadow-sm mb-1">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <span class="text-[10px] font-bold text-slate-700">Correo</span>
+                </a>
+
+                <button onclick="toggleModal('qrModal')" class="flex flex-col items-center p-2 rounded-xl hover:bg-slate-50 transition-colors group">
+                    <div class="w-10 h-10 rounded-full bg-slate-800 group-hover:bg-bgRed text-white flex items-center justify-center text-sm transition-colors shadow-sm mb-1">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </div>
+                    <span class="text-[10px] font-bold text-slate-700">QR</span>
+                </button>
+            </div>
+
+            <!-- Botón Principal: Guardar en Contactos (.vcf) -->
+            <button onclick="downloadVCard()" class="w-full bg-gradient-to-r from-bgRed to-bgRed-dark hover:from-bgRed-dark hover:to-bgRed text-white font-extrabold py-3.5 px-5 rounded-2xl shadow-lg shadow-red-900/25 transition-all transform active:scale-98 flex items-center justify-center gap-3 text-sm uppercase tracking-wide">
+                <i class="fa-solid fa-user-plus text-lg"></i>
+                <span>Guardar en Contactos</span>
+            </button>
+
+            <!-- Video de Presentación Institucional -->
+            <div class="bg-white rounded-2xl p-3.5 border border-slate-200 shadow-sm space-y-2">
+                <div class="flex items-center justify-between px-1">
+                    <h3 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-play-circle text-bgRed text-sm"></i>
+                        Mensaje de Bárbara
+                    </h3>
+                    <span class="text-[10px] bg-red-50 text-bgRed px-2 py-0.5 rounded-full font-extrabold">1 min</span>
+                </div>
+
+                <div onclick="openVideoModal()" class="relative aspect-video rounded-xl overflow-hidden bg-slate-950 group cursor-pointer border border-slate-200 shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80" alt="Video BG Administradora" class="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                    
+                    <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center p-3">
+                        <div class="w-11 h-11 rounded-full bg-bgRed text-white flex items-center justify-center text-base shadow-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-play ml-0.5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-white drop-shadow">Ver video institucional</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ecosistema Corporativo Liderado por Bárbara -->
+            <div class="space-y-3">
+                <div class="flex items-center justify-between px-1">
+                    <h3 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-bgRed"></i>
+                        Grupo de Empresas
+                    </h3>
+                    <span class="text-[10px] text-slate-500 font-semibold">Liderazgo & Soluciones</span>
+                </div>
+
+                <!-- 1. BG Administradora (Principal) -->
+                <div class="bg-white rounded-2xl p-4 border-2 border-bgRed shadow-sm relative">
+                    <div class="flex items-start justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-bgRed/10 text-bgRed font-bold flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-building"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-extrabold text-slate-900">BG Administradora</h4>
+                                <p class="text-[11px] text-slate-500 font-medium">Gestión & Ley 21.442 de Copropiedad</p>
+                            </div>
+                        </div>
+                        <span class="bg-bgRed text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase shrink-0">Principal</span>
+                    </div>
+                    <p class="text-xs text-slate-600 mt-2.5 leading-relaxed font-medium">
+                        Administración transparente e integral para edificios y condominios. Adecuación de reglamentos a la nueva Ley de Copropiedad.
+                    </p>
+                    <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+                        <span class="text-[11px] text-slate-500 font-semibold"><i class="fa-solid fa-globe text-bgRed mr-1"></i> bgadministradora.cl</span>
+                        <a href="https://www.bgadministradora.cl" target="_blank" class="text-xs text-bgRed font-bold hover:underline flex items-center gap-1">
+                            Visitar Web <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. G&S Servicios de Limpieza -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:border-sky-500 transition-all">
+                    <div class="flex items-start justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-sky-50 text-gysBlue font-bold flex items-center justify-center text-lg shrink-0 border border-sky-100">
+                                <i class="fa-solid fa-broom"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-extrabold text-slate-900">G&S Servicios de Limpieza</h4>
+                                <p class="text-[11px] text-slate-500 font-medium">Aseo Integral & Mantención</p>
+                            </div>
+                        </div>
+                        <span class="bg-sky-100 text-gysBlue text-[9px] font-bold px-2 py-0.5 rounded-full shrink-0">Grupo BG</span>
+                    </div>
+                    <p class="text-xs text-slate-600 mt-2.5 leading-relaxed font-medium">
+                        Aseo especializado para condominios, oficinas, espacios comunes y departamentos Airbnb con altos estándares.
+                    </p>
+                    <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+                        <span class="text-[11px] text-slate-500 font-semibold"><i class="fa-brands fa-whatsapp text-emerald-600 mr-1"></i> Cotización instantánea</span>
+                        <a href="https://wa.me/56981749481?text=Hola%20B%C3%A1rbara,%20quisiera%20cotizar%20servicios%20de%20limpieza%20con%20G%26S" target="_blank" class="text-xs text-gysBlue font-bold hover:underline flex items-center gap-1">
+                            Cotizar <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. Strata Factory -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:border-slate-800 transition-all">
+                    <div class="flex items-start justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-slate-900 text-white font-bold flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-robot text-bgRed"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-extrabold text-slate-900">Strata Factory</h4>
+                                <p class="text-[11px] text-slate-500 font-medium">Agentes de IA & Workflows</p>
+                            </div>
+                        </div>
+                        <span class="bg-slate-100 text-slate-800 text-[9px] font-bold px-2 py-0.5 rounded-full shrink-0">Tech Partner</span>
+                    </div>
+                    <p class="text-xs text-slate-600 mt-2.5 leading-relaxed font-medium">
+                        Ingeniería de procesos e Inteligencia Artificial para optimizar la gestión operativa y reducir costos corporativos.
+                    </p>
+                    <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+                        <span class="text-[11px] text-slate-500 font-semibold"><i class="fa-solid fa-globe text-slate-700 mr-1"></i> stratafactory.cl</span>
+                        <a href="https://www.stratafactory.cl" target="_blank" class="text-xs text-slate-900 font-bold hover:underline flex items-center gap-1">
+                            Ver Soluciones <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Redes Sociales y Compartir -->
+            <div class="bg-slate-100 rounded-2xl p-4 text-center space-y-3 border border-slate-200">
+                <p class="text-xs font-extrabold text-slate-800 uppercase tracking-wider">Conéctate con Bárbara</p>
+                <div class="flex justify-center gap-3">
+                    <a href="https://www.linkedin.com" target="_blank" class="w-9 h-9 rounded-full bg-white text-slate-800 border border-slate-300 flex items-center justify-center hover:bg-bgRed hover:text-white hover:border-bgRed transition-all shadow-2xs">
+                        <i class="fa-brands fa-linkedin-in text-sm"></i>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="w-9 h-9 rounded-full bg-white text-slate-800 border border-slate-300 flex items-center justify-center hover:bg-bgRed hover:text-white hover:border-bgRed transition-all shadow-2xs">
+                        <i class="fa-brands fa-instagram text-sm"></i>
+                    </a>
+                    <a href="https://www.facebook.com" target="_blank" class="w-9 h-9 rounded-full bg-white text-slate-800 border border-slate-300 flex items-center justify-center hover:bg-bgRed hover:text-white hover:border-bgRed transition-all shadow-2xs">
+                        <i class="fa-brands fa-facebook-f text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer Ejecutivo -->
+        <footer class="bg-slate-900 text-slate-400 px-6 py-4 text-center border-t border-slate-800">
+            <p class="text-[11px] font-semibold">
+                © <span id="year">2026</span> BG Administración Inmobiliaria
+            </p>
+            <p class="text-[10px] text-slate-500 mt-0.5">Tu comunidad, nuestras soluciones. Gestión profesional y en regla.</p>
+        </footer>
+
+    </main>
+
+    <!-- Modal QR Interactivo -->
+    <div id="qrModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 glass-modal transition-opacity">
+        <div class="bg-white border border-slate-200 rounded-3xl p-6 w-full max-w-sm text-center shadow-2xl relative">
+            <button onclick="toggleModal('qrModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="w-12 h-12 bg-bgRed/10 text-bgRed rounded-2xl flex items-center justify-center mx-auto mb-3 text-xl font-bold">
+                <i class="fa-solid fa-qrcode"></i>
+            </div>
+
+            <h3 class="text-lg font-extrabold text-slate-900">Escanear Tarjeta Virtual</h3>
+            <p class="text-xs text-slate-500 mt-1 mb-4">Apunta con la cámara de tu teléfono para guardar el contacto de Bárbara</p>
+            
+            <div class="bg-slate-50 p-4 rounded-2xl inline-block border border-slate-200 shadow-inner mb-4">
+                <div id="qrcode" class="flex justify-center"></div>
+            </div>
+
+            <p class="text-xs font-bold text-slate-900 mb-4">Bárbara Gutiérrez Cortes • CEO BG</p>
+
+            <button onclick="toggleModal('qrModal')" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-xs transition-colors">
+                Cerrar
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal Video -->
+    <div id="videoModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 glass-modal">
+        <div class="bg-white border border-slate-200 rounded-3xl p-5 w-full max-w-lg shadow-2xl relative">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-circle-play text-bgRed"></i>
+                    Presentación BG Administradora
+                </h3>
+                <button onclick="closeVideoModal()" class="text-slate-400 hover:text-slate-800 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-slate-950 border border-slate-200 shadow-inner">
+                <iframe id="videoIframe" class="w-full h-full" src="" title="Video de Presentación" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <p class="mt-3 text-xs text-slate-600 leading-relaxed font-medium">
+                "En BG Administradora brindamos tranquilidad a su comunidad con gestión en regla, transparencia y soluciones integrales."
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Actualizar año del footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Generar Código QR de la URL actual o fallback
+        window.addEventListener('load', function() {
+            const currentUrl = window.location.href.startsWith('http') ? window.location.href : 'https://www.bgadministradora.cl';
+            
+            new QRCode(document.getElementById("qrcode"), {
+                text: currentUrl,
+                width: 180,
+                height: 180,
+                colorDark : "#0f172a",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+
+        // Alternar visibilidad de Modales
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.toggle('hidden');
+        }
+
+        // Control del modal de Video
+        function openVideoModal() {
+            const iframe = document.getElementById('videoIframe');
+            iframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
+            document.getElementById('videoModal').classList.remove('hidden');
+        }
+
+        function closeVideoModal() {
+            const iframe = document.getElementById('videoIframe');
+            iframe.src = "";
+            document.getElementById('videoModal').classList.add('hidden');
+        }
+
+        // Función de Descarga del Archivo vCard (.vcf) para iOS y Android
+        function downloadVCard() {
+            const vCardData = `BEGIN:VCARD
+VERSION:3.0
+N:Gutiérrez Cortes;Bárbara;;;
+FN:Bárbara Gutiérrez Cortes
+ORG:BG Administración Inmobiliaria
+TITLE:Fundadora y CEO
+TEL;TYPE=CELL,VOICE:+56981749481
+EMAIL;TYPE=PREF,INTERNET:barbaragc@bgadministradora.cl
+URL;TYPE=WORK:https://www.bgadministradora.cl
+NOTE:Grupo Corporativo: BG Administradora | G&S Servicios de Limpieza | Strata Factory
+END:VCARD`;
+
+            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8;' });
+            const url = window.URL.createObjectURL(blob);
+            const downloadLink = document.createElement('a');
+            
+            downloadLink.href = url;
+            downloadLink.setAttribute('download', 'Barbara_Gutierrez_BG.vcf');
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
