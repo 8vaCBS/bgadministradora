@@ -20,6 +20,16 @@
     <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0773/9683/6592/files/Diseno_sin_titulo_sin_fondo.png?v=1784933992">
     <link rel="apple-touch-icon" href="https://cdn.shopify.com/s/files/1/0773/9683/6592/files/Diseno_sin_titulo_sin_fondo.png?v=1784933992">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRRLCQ9S8J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GRRLCQ9S8J');
+    </script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -193,7 +203,6 @@
     <main class="flex-grow">
         <!-- Hero Section -->
         <section class="relative bg-brand-black text-white py-16 lg:py-24 overflow-hidden">
-            <!-- Background Accent Visual -->
             <div class="absolute inset-0 opacity-20 pointer-events-none">
                 <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-brand-red blur-3xl"></div>
                 <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-slate-700 blur-2xl"></div>
@@ -255,7 +264,6 @@
                     <!-- Right Hero Visual Card -->
                     <div class="lg:col-span-5">
                         <div class="relative bg-gradient-to-b from-slate-800 to-slate-900 border border-slate-700 p-6 sm:p-8 rounded-2xl shadow-2xl">
-                            <!-- Floating Badge -->
                             <div class="absolute -top-4 right-6 bg-brand-red text-white text-[11px] font-extrabold uppercase px-3 py-1 rounded-full shadow-md tracking-wider">
                                 Atenta a emergencias
                             </div>
@@ -706,7 +714,6 @@
                     
                     <div class="lg:col-span-5 flex justify-center">
                         <div class="relative w-full max-w-md">
-                            <!-- Styled Profile Graphic Box with Bárbara's photo -->
                             <div class="bg-gradient-to-tr from-brand-red to-slate-800 p-1.5 rounded-3xl shadow-2xl">
                                 <div class="bg-slate-900 rounded-[22px] p-6 text-center space-y-4">
                                     <div class="relative w-44 h-44 sm:w-52 sm:h-52 mx-auto rounded-full p-1 bg-gradient-to-tr from-brand-red to-amber-500 shadow-xl overflow-hidden">
@@ -1079,10 +1086,10 @@
                 <!-- Col 1: Brand Info -->
                 <div class="space-y-4">
                     <a href="#" class="inline-block group">
-                        <div class="bg-white p-2 rounded-xl shadow-md inline-flex items-center justify-center overflow-hidden h-20 w-auto group-hover:scale-105 transition-transform">
+                        <div class="overflow-hidden h-24 w-auto flex items-center justify-start group-hover:scale-105 transition-transform">
                             <img src="https://cdn.shopify.com/s/files/1/0773/9683/6592/files/51b3a483-adfd-4e74-9a03-7843895f04e7.jpg?v=1784930965" 
                                  alt="BG Administradora Inmobiliaria Logo" 
-                                 class="h-28 w-auto object-cover scale-125 transform">
+                                 class="h-24 w-auto object-cover scale-125 transform rounded-xl shadow-md">
                         </div>
                     </a>
                     <p class="text-slate-300 text-xs leading-relaxed">
@@ -1125,6 +1132,7 @@
 
             </div>
 
+            <!-- Bottom Sub-Footer with StrataFactory Branding -->
             <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-300 gap-4">
                 <p class="text-slate-300 font-medium">© 2026 BG Administradora Inmobiliaria - www.bgadministradora.cl. Todos los derechos reservados.</p>
                 <div class="flex flex-wrap items-center justify-center sm:justify-end gap-6">
@@ -1172,20 +1180,16 @@
 
         // Tab Switching Logic for Normativa
         function switchTab(tabId) {
-            // Hide all tab contents
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.add('hidden');
             });
-            // Reset button styles
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('bg-brand-red', 'text-white');
                 btn.classList.add('bg-slate-100', 'text-slate-700');
             });
 
-            // Show selected tab
             document.getElementById(tabId).classList.remove('hidden');
 
-            // Style active button
             const activeBtn = document.getElementById('btn-' + tabId.replace('tab-', ''));
             if(activeBtn) {
                 activeBtn.classList.remove('bg-slate-100', 'text-slate-700');
@@ -1225,7 +1229,6 @@
 
             resultBox.classList.remove('hidden');
 
-            // Evaluate simple score
             let issues = 0;
             if (quizAnswers[1] !== 'si') issues++;
             if (quizAnswers[2] !== 'si') issues++;
@@ -1265,7 +1268,6 @@
             const unidades = form.unidades.value || 'N/A';
             const mensaje = form.mensaje.value;
 
-            // Construct mailto URL dynamically targeting selected email
             const subject = encodeURIComponent(`Mensaje desde Web BG Administradora - ${tipo} (${comuna})`);
             const body = encodeURIComponent(
                 `Solicitud desde el sitio web www.bgadministradora.cl:\n\n` +
@@ -1279,10 +1281,8 @@
                 `Detalle del mensaje:\n${mensaje}`
             );
 
-            // Open user's mail client with specific recipient
             window.location.href = `mailto:${destino}?subject=${subject}&body=${body}`;
 
-            // Show feedback UI
             const feedbackEl = document.getElementById('form-feedback');
             const emailHolder = document.getElementById('feedback-email');
             if (emailHolder) emailHolder.textContent = destino;
