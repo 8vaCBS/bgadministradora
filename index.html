@@ -1404,11 +1404,21 @@
                                     <div>
                                         <label for="tipo" class="block text-xs font-semibold text-slate-700 mb-1">Tipo de Propiedad *</label>
                                         <select id="tipo" name="tipo" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-800 focus:ring-2 focus:ring-brand-red focus:outline-none transition-all">
-                                            <option value="Edificio de Departamentos">Edificio de Departamentos</option>
-                                            <option value="Condominio de Casas">Condominio de Casas</option>
-                                            <option value="Edificio Mixto / Oficinas">Edificio Mixto / Oficinas</option>
-                                            <option value="Proveedor / Facturación">Gestión Proveedor / Facturación</option>
-                                            <option value="Otro">Otro</option>
+                                            <optgroup label="Administración de comunidad">
+                                                <option value="Edificio de Departamentos">Edificio de Departamentos</option>
+                                                <option value="Condominio de Casas">Condominio de Casas</option>
+                                                <option value="Edificio Mixto / Oficinas">Edificio Mixto / Oficinas</option>
+                                            </optgroup>
+                                            <optgroup label="Venta de propiedad">
+                                                <option value="Venta - Departamento">Departamento</option>
+                                                <option value="Venta - Casa">Casa</option>
+                                                <option value="Venta - Oficina / Local">Oficina / Local</option>
+                                                <option value="Venta - Terreno">Terreno</option>
+                                            </optgroup>
+                                            <optgroup label="Otros">
+                                                <option value="Proveedor / Facturación">Gestión Proveedor / Facturación</option>
+                                                <option value="Otro">Otro</option>
+                                            </optgroup>
                                         </select>
                                     </div>
                                     <div>
@@ -1630,6 +1640,17 @@
             consultas:    { email: 'hola@bgadministradora.cl',         nombre: 'Consultas Generales y Residentes' },
             contabilidad: { email: 'contabilidad@bgadministradora.cl', nombre: 'Proveedores y Contabilidad' }
         };
+        // Al elegir un área, sugerir un tipo de propiedad coherente
+        document.addEventListener('DOMContentLoaded', function () {
+            const d = document.getElementById('destino'), t = document.getElementById('tipo');
+            if (!d || !t) return;
+            d.addEventListener('change', function () {
+                const esVenta = t.value.indexOf('Venta - ') === 0;
+                if (d.value === 'venta' && !esVenta) t.value = 'Venta - Departamento';
+                else if (d.value === 'contabilidad') t.value = 'Proveedor / Facturación';
+                else if ((d.value === 'comercial' || d.value === 'consultas') && (esVenta || t.value === 'Proveedor / Facturación')) t.value = 'Edificio de Departamentos';
+            });
+        });
         async function handleFormSubmit(event) {
             event.preventDefault();
             const form = event.target;
