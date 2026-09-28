@@ -7,13 +7,16 @@
     <meta name="description" content="Administración profesional, transparente y cercana de condominios y edificios. Especialistas en Ley 21.442, Sello Verde SEC, seguros de copropiedad y mantención integral. Bárbara Gutiérrez.">
     <meta name="keywords" content="administracion de condominios, ley 21.442, administrador de edificios santiago, sello verde SEC, seguro incendio edificio, reglamento de copropiedad, bg administradora">
     <meta name="author" content="BG Administradora Inmobiliaria">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://www.bgadministradora.cl/">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="BG Administradora Inmobiliaria | Administramos tu comunidad, mejoramos tu mañana">
     <meta property="og:description" content="Gestionamos tu comunidad con compromiso, transparencia y profesionalismo bajo la Ley 21.442.">
-    <meta property="og:url" content="https://www.bgadministradora.cl">
+    <meta property="og:url" content="https://www.bgadministradora.cl/">
+    <meta property="og:locale" content="es_CL">
+    <meta property="og:site_name" content="BG Administradora Inmobiliaria">
     <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0773/9683/6592/files/Diseno_sin_titulo_sin_fondo.png?v=1784933992">
 
     <!-- Favicon -->
@@ -63,25 +66,54 @@
 
     <!-- Structured Data (Schema.org JSON-LD for Local Business SEO) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "RealEstateAgent",
+      "@type": [
+        "RealEstateAgent",
+        "LocalBusiness"
+      ],
+      "@id": "https://www.bgadministradora.cl/#empresa",
       "name": "BG Administradora Inmobiliaria",
+      "description": "Administración profesional de condominios y edificios en Chile: gastos comunes, cobranza, mantención, seguros, Sello Verde SEC y adecuación de reglamentos a la Ley 21.442.",
+      "url": "https://www.bgadministradora.cl/",
+      "logo": "https://cdn.shopify.com/s/files/1/0773/9683/6592/files/Diseno_sin_titulo_sin_fondo.png?v=1784933992",
       "image": "https://cdn.shopify.com/s/files/1/0773/9683/6592/files/Diseno_sin_titulo_sin_fondo.png?v=1784933992",
       "telephone": "+56981749481",
       "email": "barbaragc@bgadministradora.cl",
-      "url": "https://www.bgadministradora.cl",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Santiago",
         "addressRegion": "Región Metropolitana",
         "addressCountry": "CL"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "-33.448889",
-        "longitude": "-70.669265"
-      },
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Región Metropolitana de Santiago (todas sus comunas)"
+        },
+        {
+          "@type": "City",
+          "name": "Rancagua"
+        },
+        {
+          "@type": "City",
+          "name": "Valparaíso"
+        },
+        {
+          "@type": "City",
+          "name": "Viña del Mar"
+        },
+        {
+          "@type": "City",
+          "name": "La Serena"
+        },
+        {
+          "@type": "City",
+          "name": "Coquimbo"
+        }
+      ],
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": [
@@ -94,11 +126,339 @@
         "opens": "08:30",
         "closes": "18:30"
       },
+      "founder": {
+        "@id": "https://www.bgadministradora.cl/#barbara"
+      },
+      "knowsAbout": [
+        "Administración de condominios",
+        "Administración de edificios",
+        "Ley 21.442 de Copropiedad Inmobiliaria",
+        "Reglamento de copropiedad",
+        "Sello Verde SEC",
+        "Seguros colectivos de incendio y sismo",
+        "Cobranza de gastos comunes"
+      ],
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Administración de condominios",
+            "areaServed": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Región Metropolitana de Santiago (todas sus comunas)"
+              },
+              {
+                "@type": "City",
+                "name": "Rancagua"
+              },
+              {
+                "@type": "City",
+                "name": "Valparaíso"
+              },
+              {
+                "@type": "City",
+                "name": "Viña del Mar"
+              },
+              {
+                "@type": "City",
+                "name": "La Serena"
+              },
+              {
+                "@type": "City",
+                "name": "Coquimbo"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Administración de edificios",
+            "areaServed": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Región Metropolitana de Santiago (todas sus comunas)"
+              },
+              {
+                "@type": "City",
+                "name": "Rancagua"
+              },
+              {
+                "@type": "City",
+                "name": "Valparaíso"
+              },
+              {
+                "@type": "City",
+                "name": "Viña del Mar"
+              },
+              {
+                "@type": "City",
+                "name": "La Serena"
+              },
+              {
+                "@type": "City",
+                "name": "Coquimbo"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Cobranza y finanzas de gastos comunes",
+            "areaServed": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Región Metropolitana de Santiago (todas sus comunas)"
+              },
+              {
+                "@type": "City",
+                "name": "Rancagua"
+              },
+              {
+                "@type": "City",
+                "name": "Valparaíso"
+              },
+              {
+                "@type": "City",
+                "name": "Viña del Mar"
+              },
+              {
+                "@type": "City",
+                "name": "La Serena"
+              },
+              {
+                "@type": "City",
+                "name": "Coquimbo"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Mantención y servicios técnicos",
+            "areaServed": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Región Metropolitana de Santiago (todas sus comunas)"
+              },
+              {
+                "@type": "City",
+                "name": "Rancagua"
+              },
+              {
+                "@type": "City",
+                "name": "Valparaíso"
+              },
+              {
+                "@type": "City",
+                "name": "Viña del Mar"
+              },
+              {
+                "@type": "City",
+                "name": "La Serena"
+              },
+              {
+                "@type": "City",
+                "name": "Coquimbo"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Adecuación de reglamento a la Ley 21.442",
+            "areaServed": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Región Metropolitana de Santiago (todas sus comunas)"
+              },
+              {
+                "@type": "City",
+                "name": "Rancagua"
+              },
+              {
+                "@type": "City",
+                "name": "Valparaíso"
+              },
+              {
+                "@type": "City",
+                "name": "Viña del Mar"
+              },
+              {
+                "@type": "City",
+                "name": "La Serena"
+              },
+              {
+                "@type": "City",
+                "name": "Coquimbo"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Gestión de emergencias 24/7",
+            "areaServed": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Región Metropolitana de Santiago (todas sus comunas)"
+              },
+              {
+                "@type": "City",
+                "name": "Rancagua"
+              },
+              {
+                "@type": "City",
+                "name": "Valparaíso"
+              },
+              {
+                "@type": "City",
+                "name": "Viña del Mar"
+              },
+              {
+                "@type": "City",
+                "name": "La Serena"
+              },
+              {
+                "@type": "City",
+                "name": "Coquimbo"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Gestión de seguros colectivos",
+            "areaServed": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Región Metropolitana de Santiago (todas sus comunas)"
+              },
+              {
+                "@type": "City",
+                "name": "Rancagua"
+              },
+              {
+                "@type": "City",
+                "name": "Valparaíso"
+              },
+              {
+                "@type": "City",
+                "name": "Viña del Mar"
+              },
+              {
+                "@type": "City",
+                "name": "La Serena"
+              },
+              {
+                "@type": "City",
+                "name": "Coquimbo"
+              }
+            ]
+          }
+        }
+      ],
       "sameAs": [
         "https://www.instagram.com/bg.administradora/",
         "https://www.linkedin.com/in/b%C3%A1rbara-guti%C3%A9rrez-administradora-inmobiliaria-5ba131412"
       ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.bgadministradora.cl/#barbara",
+      "name": "Bárbara Gutiérrez Cortes",
+      "jobTitle": "Administradora de Condominios",
+      "image": "https://cdn.shopify.com/s/files/1/0773/9683/6592/files/Diseno_sin_titulo_9.png?v=1784934146",
+      "worksFor": {
+        "@id": "https://www.bgadministradora.cl/#empresa"
+      },
+      "email": "barbaragc@bgadministradora.cl",
+      "telephone": "+56981749481",
+      "knowsAbout": [
+        "Ley 21.442 de Copropiedad Inmobiliaria",
+        "Administración de condominios",
+        "Inteligencia artificial aplicada a la administración inmobiliaria"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Certificación en Administración de Edificios y Condominios (94 horas)",
+          "credentialCategory": "certificate",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Learning Group & Fundación Emprenden"
+          },
+          "dateCreated": "2025-12"
+        }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/b%C3%A1rbara-guti%C3%A9rrez-administradora-inmobiliaria-5ba131412",
+        "https://www.instagram.com/bg.administradora/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.bgadministradora.cl/#web",
+      "url": "https://www.bgadministradora.cl/",
+      "name": "BG Administradora Inmobiliaria",
+      "inLanguage": "es-CL",
+      "publisher": {
+        "@id": "https://www.bgadministradora.cl/#empresa"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.bgadministradora.cl/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Por qué es obligatorio adaptar nuestro Reglamento a la Ley 21.442?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La Ley 21.442 actualizó profundamente el marco regulatorio en Chile (asambleas virtuales, quorum de votación, derechos de copropietarios y facultades de los administradores). Mantener un reglamento desactualizado genera vacíos legales e invalidez de acuerdos en asambleas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Un propietario que no reside en el edificio puede ser del Comité de Administración?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Según el artículo 19 de la Ley 21.442, no se exige residencia efectiva. Lo fundamental es que sea copropietario hábil (que esté al día en el pago de sus gastos comunes) o su representante autorizado según la norma."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo se maneja la morosidad de los gastos comunes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Aplicamos cobros preventivos claros, recordatorios automáticos y convenios de pago formales. En caso de mora prolongada, se aplican los procedimientos legales contemplados en la ley (corte de suministro eléctrico previo aviso e instancias judiciales si corresponde)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo iniciamos el proceso de cambio de administración?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El proceso es sencillo y transparente. Nos reunimos con el Comité de Administración, realizamos una evaluación inicial del edificio, presentamos nuestra propuesta comercial y coordinamos el traspaso ordenado de la documentación contable y operacional."
+          }
+        }
+      ]
     }
+  ]
+}
     </script>
 
     <style>
@@ -849,7 +1209,7 @@
                                 </p>
                             </div>
                             <div class="pt-4 mt-4 border-t border-slate-700/60 text-[11px] text-slate-400 space-y-1">
-                                <p><i class="fa-solid fa-gavel text-brand-red mr-1"></i> Cobertura: Región Metropolitana y V Región</p>
+                                <p><i class="fa-solid fa-gavel text-brand-red mr-1"></i> Cobertura: todas las comunas de la Región Metropolitana, Rancagua, Valparaíso, Viña del Mar, La Serena y Coquimbo</p>
                                 <p><i class="fa-solid fa-file-shield text-brand-red mr-1"></i> Estado: Regularización Garantizada</p>
                             </div>
                         </div>
