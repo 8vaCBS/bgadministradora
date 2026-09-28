@@ -1595,6 +1595,8 @@
             if (quizAnswers[3] !== 'si') issues++;
             if (quizAnswers[4] !== 'si') issues++;
 
+            if (window.bgTrack) window.bgTrack('diagnostico_completado', { issues: issues, nivel: issues === 0 ? 'ok' : (issues <= 2 ? 'moderado' : 'alto') });
+
             if (issues === 0) {
                 titleEl.textContent = "¡Excelente! Tu comunidad presenta un buen nivel de regulación.";
                 descEl.textContent = "Aun así, te sugerimos realizar auditorías anuales preventivas para mantener los deslindes de seguros y certificaciones al día bajo la Ley 21.442.";
@@ -1641,6 +1643,12 @@
                 `Detalle del mensaje:\n${mensaje}`
             );
 
+            if (window.bgTrack) window.bgTrack('generate_lead', {
+                form_area: destino.split('@')[0],
+                property_type: tipo,
+                units: unidades,
+                link_location: 'contacto'
+            });
             window.location.href = `mailto:${destino}?subject=${subject}&body=${body}`;
 
             const feedbackEl = document.getElementById('form-feedback');
@@ -1648,6 +1656,40 @@
             if (emailHolder) emailHolder.textContent = destino;
             if (feedbackEl) feedbackEl.classList.remove('hidden');
         }
+    </script>
+
+    <!-- GA4: medición de conversiones (clics de contacto) -->
+    <script>
+    (function () {
+      function track(name, params) {
+        if (typeof gtag === 'function') {
+          params = params || {};
+          params.transport_type = 'beacon';
+          gtag('event', name, params);
+        }
+      }
+      window.bgTrack = track;
+      function zona(el) {
+        if (el.closest('header')) return 'header';
+        if (el.closest('footer')) return 'footer';
+        var s = el.closest('section[id]');
+        return s ? s.id : 'otro';
+      }
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href]');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var p = { link_location: zona(a), page_section: location.pathname };
+        if (href.indexOf('wa.me') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
+          track('contact_whatsapp', p);
+        } else if (href.indexOf('tel:') === 0) {
+          track('contact_phone', p);
+        } else if (href.indexOf('mailto:') === 0) {
+          p.email_area = href.replace('mailto:', '').split('@')[0].split('?')[0];
+          track('contact_email', p);
+        }
+      }, true);
+    })();
     </script>
 </body>
 </html>
