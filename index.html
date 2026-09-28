@@ -1421,6 +1421,7 @@
                                     <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Coméntanos el motivo de tu consulta, cotización o trámite de proveedor..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-800 focus:ring-2 focus:ring-brand-red focus:outline-none transition-all"></textarea>
                                 </div>
 
+                                <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
                                 <button type="submit" class="w-full bg-brand-red hover:bg-brand-darkred text-white font-bold py-3.5 px-6 rounded-xl text-xs uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2">
                                     <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje
                                 </button>
@@ -1428,7 +1429,11 @@
 
                             <div id="form-feedback" class="hidden mt-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 text-center">
                                 <i class="fa-solid fa-circle-check text-emerald-600 text-lg mb-1 block"></i>
-                                <strong>¡Solicitud preparada con éxito!</strong> Se ha configurado el envío directo a <strong id="feedback-email"></strong>. También puedes comunicarte de inmediato por WhatsApp.
+                                <strong>¡Mensaje enviado!</strong> Recibimos tu solicitud y te contactaremos a la brevedad. Si es urgente, escríbenos por <a href="https://wa.me/56981749481" class="underline font-bold">WhatsApp</a>.
+                            </div>
+                            <div id="form-error" role="alert" class="hidden mt-4 p-4 rounded-xl bg-red-50 border border-red-200 text-xs text-red-800 text-center">
+                                <i class="fa-solid fa-triangle-exclamation text-red-600 text-lg mb-1 block"></i>
+                                <strong>No pudimos enviar tu mensaje.</strong> Inténtalo nuevamente o escríbenos directamente por <a href="https://wa.me/56981749481" class="underline font-bold">WhatsApp</a> o a <a href="mailto:barbaragc@bgadministradora.cl" class="underline font-bold">barbaragc@bgadministradora.cl</a>.
                             </div>
                         </div>
                     </div>
@@ -1617,44 +1622,67 @@
             });
         }
 
-        // Form Submit Handler
-        function handleFormSubmit(event) {
+        // Form Submit Handler: envío real vía FormSubmit (AJAX), sin abrir el correo del visitante
+        const AREAS_PERMITIDAS = ['barbaragc@bgadministradora.cl', 'hola@bgadministradora.cl', 'contabilidad@bgadministradora.cl'];
+        async function handleFormSubmit(event) {
             event.preventDefault();
             const form = event.target;
-            const destino = form.destino.value;
-            const nombre = form.nombre.value;
-            const telefono = form.telefono.value;
-            const email = form.email.value;
-            const comuna = form.comuna.value;
+            const btn = form.querySelector('button[type="submit"]');
+            const okEl = document.getElementById('form-feedback');
+            const errEl = document.getElementById('form-error');
+            okEl.classList.add('hidden'); errEl.classList.add('hidden');
+
+            if (form._honey && form._honey.value) return; // bot
+
+            const destino = AREAS_PERMITIDAS.includes(form.destino.value) ? form.destino.value : AREAS_PERMITIDAS[0];
             const tipo = form.tipo.value;
+            const comuna = form.comuna.value;
             const unidades = form.unidades.value || 'N/A';
-            const mensaje = form.mensaje.value;
+            const datos = {
+                _subject: `Nueva solicitud web BG - ${tipo} (${comuna})`,
+                _template: 'table',
+                _captcha: 'false',
+                _replyto: form.email.value,
+                'Nombre': form.nombre.value,
+                'Teléfono': form.telefono.value,
+                'Correo': form.email.value,
+                'Comuna / Ciudad': comuna,
+                'Tipo de propiedad / motivo': tipo,
+                'N° de unidades': unidades,
+                'Mensaje': form.mensaje.value,
+                'Área seleccionada': destino,
+                'Origen': 'Formulario www.bgadministradora.cl'
+            };
 
-            const subject = encodeURIComponent(`Mensaje desde Web BG Administradora - ${tipo} (${comuna})`);
-            const body = encodeURIComponent(
-                `Solicitud desde el sitio web www.bgadministradora.cl:\n\n` +
-                `Canal Seleccionado: ${destino}\n` +
-                `Nombre: ${nombre}\n` +
-                `Teléfono: ${telefono}\n` +
-                `Email Remitente: ${email}\n` +
-                `Comuna/Ciudad: ${comuna}\n` +
-                `Tipo de Propiedad / Motivo: ${tipo}\n` +
-                `Nº de Unidades: ${unidades}\n\n` +
-                `Detalle del mensaje:\n${mensaje}`
-            );
-
-            if (window.bgTrack) window.bgTrack('generate_lead', {
-                form_area: destino.split('@')[0],
-                property_type: tipo,
-                units: unidades,
-                link_location: 'contacto'
-            });
-            window.location.href = `mailto:${destino}?subject=${subject}&body=${body}`;
-
-            const feedbackEl = document.getElementById('form-feedback');
-            const emailHolder = document.getElementById('feedback-email');
-            if (emailHolder) emailHolder.textContent = destino;
-            if (feedbackEl) feedbackEl.classList.remove('hidden');
+            const textoBtn = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+            try {
+                const resp = await fetch('https://formsubmit.co/ajax/' + destino, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(datos)
+                });
+                const json = await resp.json().catch(() => ({}));
+                if (resp.ok && String(json.success) === 'true') {
+                    if (window.bgTrack) window.bgTrack('generate_lead', {
+                        form_area: destino.split('@')[0],
+                        property_type: tipo,
+                        units: unidades,
+                        link_location: 'contacto'
+                    });
+                    form.reset();
+                    okEl.classList.remove('hidden');
+                } else {
+                    throw new Error(json.message || ('HTTP ' + resp.status));
+                }
+            } catch (e) {
+                if (window.bgTrack) window.bgTrack('form_error', { form_area: destino.split('@')[0], error_message: String(e.message).slice(0, 90) });
+                errEl.classList.remove('hidden');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = textoBtn;
+            }
         }
     </script>
 
