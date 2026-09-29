@@ -1,0 +1,37 @@
+{
+  "titulo": "Casa esquina en venta en Coquimbo, sector Barrio Oriente.",
+  "estado": "Disponible",
+  "publicado": true,
+  "operacion": "Venta",
+  "tipo": "Casa",
+  "comuna": "Coquimbo",
+  "precio": 3665,
+  "moneda": "UF",
+  "portada": "/assets/propiedades/058fb58e-652b-4e02-b7bd-a1d7c315d024.webp",
+  "fotos": [
+    {
+      "imagen": "/assets/propiedades/a0326872-6f61-45db-8aa8-ede37885a56a.webp",
+      "texto": ""
+    }
+  ],
+  "video": "",
+  "dormitorios": null,
+  "banos": null,
+  "m2_utiles": null,
+  "m2_totales": null,
+  "m2_terreno": null,
+  "estacionamientos": null,
+  "bodegas": null,
+  "gastos_comunes": null,
+  "sector": "",
+  "region": "Región Metropolitana",
+  "descripcion": "",
+  "caracteristicas": [],
+  "anio": null,
+  "piso": "",
+  "orientacion": "",
+  "resumen": "",
+  "destacado": false,
+  "fecha": "2026-09-29",
+  "ejemplo": false
+}
