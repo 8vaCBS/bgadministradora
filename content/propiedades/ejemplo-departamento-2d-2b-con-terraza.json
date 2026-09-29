@@ -1,0 +1,48 @@
+{
+  "titulo": "EJEMPLO – Departamento 2D 2B con terraza",
+  "publicado": true,
+  "ejemplo": true,
+  "estado": "Disponible",
+  "operacion": "Venta",
+  "tipo": "Departamento",
+  "comuna": "Ñuñoa",
+  "sector": "Plaza Egaña",
+  "region": "Región Metropolitana",
+  "precio": 5200,
+  "moneda": "UF",
+  "resumen": "Ficha de ejemplo para probar el panel. No se publica en el sitio oficial.",
+  "portada": "/assets/propiedades/ejemplo-1.jpg",
+  "fotos": [
+    {
+      "imagen": "/assets/propiedades/ejemplo-2.jpg",
+      "texto": "Cocina"
+    },
+    {
+      "imagen": "/assets/propiedades/ejemplo-3.jpg",
+      "texto": "Dormitorio principal"
+    },
+    {
+      "imagen": "/assets/propiedades/ejemplo-4.jpg",
+      "texto": "Terraza"
+    }
+  ],
+  "dormitorios": 2,
+  "banos": 2,
+  "m2_utiles": 62,
+  "m2_totales": 70,
+  "estacionamientos": 1,
+  "bodegas": 1,
+  "gastos_comunes": 95000,
+  "anio": 2018,
+  "piso": "8",
+  "orientacion": "Nor-oriente",
+  "descripcion": "Esta es una **ficha de ejemplo** para que Bárbara vea cómo queda una propiedad publicada.\n\n- Living comedor con salida a terraza\n- Cocina equipada\n- Cerca del metro",
+  "caracteristicas": [
+    "Piscina",
+    "Quincho",
+    "Conserjería 24/7",
+    "Gimnasio"
+  ],
+  "destacado": true,
+  "fecha": "2026-09-28T12:00:00.000Z"
+}
