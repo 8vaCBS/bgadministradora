@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es-CL" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}}</title>
+    <meta name="description" content="{{DESC}}">
+    <meta name="author" content="BG Administradora Inmobiliaria">
+    <meta name="robots" content="{{ROBOTS}}">
+    <link rel="canonical" href="{{CANONICAL}}">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{TITLE}}">
+    <meta property="og:description" content="{{DESC}}">
+    <meta property="og:url" content="{{CANONICAL}}">
+    <meta property="og:locale" content="es_CL">
+    <meta property="og:site_name" content="BG Administradora Inmobiliaria">
+    <meta property="og:image" content="{{OG_IMAGE}}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0773/9683/6592/files/Diseno_sin_titulo_sin_fondo.png?v=1784933992">
+    <link rel="apple-touch-icon" href="https://cdn.shopify.com/s/files/1/0773/9683/6592/files/Diseno_sin_titulo_sin_fondo.png?v=1784933992">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRRLCQ9S8J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GRRLCQ9S8J');
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#C81D25',
+                            darkred: '#9B1118',
+                            black: '#121826',
+                            grayDark: '#1F2937',
+                            grayLight: '#F8FAFC',
+                            accent: '#D4AF37'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&family=Alex+Brush&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&family=Alex+Brush&display=swap"></noscript>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- Structured Data (Schema.org JSON-LD for Local Business SEO) -->
+    <script type="application/ld+json">{{JSONLD}}</script>
+
+    <style>
+        .font-handwriting { font-family: 'Alex Brush', cursive; }
+        .bg-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(18,24,38,0.95) 0%, rgba(31,41,55,0.88) 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans flex flex-col min-h-screen">
+
+    <!-- Top Announcement / Quick Contact Bar -->
+    <div class="bg-brand-black text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-brand-red"></i> Cumplimiento Garantizado Ley 21.442</span>
+                <span class="hidden md:inline-block text-slate-600">|</span>
+                <span class="hidden md:flex items-center gap-1.5"><i class="fa-solid fa-brain text-brand-red"></i> Gestión Inteligente e Innovación IA</span>
+                <span class="hidden xl:inline-block text-slate-600">|</span>
+                <a href="/vender-mi-departamento" class="hidden xl:flex items-center gap-1.5 text-white font-semibold hover:text-brand-red transition-colors"><i class="fa-solid fa-house-circle-check text-brand-red"></i> ¿Quieres vender tu propiedad?</a>
+            </div>
+            <div class="flex items-center space-x-4 text-xs font-medium">
+                <a href="mailto:barbaragc@bgadministradora.cl" class="hover:text-white transition-colors flex items-center gap-1">
+                    <i class="fa-regular fa-envelope text-brand-red"></i> barbaragc@bgadministradora.cl
+                </a>
+                <a href="tel:+56981749481" class="hover:text-white transition-colors flex items-center gap-1">
+                    <i class="fa-solid fa-phone text-brand-red"></i> +56 9 8174 9481
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 sm:h-24">
+                <!-- Brand Logo -->
+                <a href="/" class="flex items-center space-x-2.5 sm:space-x-3 group py-2">
+                    <img src="https://cdn.shopify.com/s/files/1/0773/9683/6592/files/Diseno_sin_titulo_sin_fondo.png?v=1784933992" 
+                         alt="BG Logo" 
+                         class="h-11 sm:h-14 w-auto object-contain transition-transform group-hover:scale-105 flex-shrink-0">
+                    <div class="flex flex-col justify-center leading-tight">
+                        <div class="font-heading font-extrabold text-base sm:text-xl tracking-tight flex items-center gap-1">
+                            <span class="text-slate-900">BG</span>
+                            <span class="text-brand-red uppercase">ADMINISTRADORA</span>
+                        </div>
+                        <span class="text-[9px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider">INMOBILIARIA & CONDOMINIOS</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Navigation -->
+                <nav class="hidden xl:flex items-center space-x-6 2xl:space-x-8 font-medium text-sm text-slate-700 whitespace-nowrap">
+                    <a href="/#servicios" class="hover:text-brand-red transition-colors">Servicios</a>
+                    <a href="/#normativa" class="hover:text-brand-red transition-colors">Ley 21.442</a>
+                    <a href="/propiedades" class="{{NAV_PROP_CLASS}}">
+                        <i class="fa-solid fa-house"></i> Propiedades
+                    </a>
+                    <a href="/#nosotros" class="hover:text-brand-red transition-colors">Nosotros</a>
+                    <a href="/#faq" class="hover:text-brand-red transition-colors">Preguntas</a>
+                </nav>
+
+                <!-- Action Button Desktop -->
+                <div class="hidden lg:flex items-center space-x-3 whitespace-nowrap ml-auto mr-3 xl:ml-0 xl:mr-0">
+                    <a href="{{WA_URL}}" 
+                       target="_blank" 
+                       class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs py-2.5 px-4 rounded-xl shadow-md transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp
+                    </a>
+                    <a href="#contacto-propiedad" class="inline-flex items-center gap-2 bg-brand-red hover:bg-brand-darkred text-white font-semibold text-xs py-2.5 px-4 rounded-xl shadow-md transition-all transform hover:-translate-y-0.5">
+                        Consultar
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" aria-label="Abrir menú" class="xl:hidden text-slate-700 focus:outline-none p-2 rounded-lg hover:bg-slate-100">
+                    <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="/#servicios" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50">Servicios Principales</a>
+            <a href="/#normativa" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50">Normativa Ley 21.442</a>
+            <a href="/propiedades" class="mobile-link block px-3 py-2 rounded-md font-medium text-brand-red bg-red-50">Propiedades en Venta</a>
+            <a href="/vender-mi-departamento" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50">Vender mi Propiedad</a>
+            <a href="/#nosotros" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50">Quiénes Somos</a>
+            <a href="/#faq" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50">Preguntas Frecuentes</a>
+            <a href="/vender-mi-departamento" class="block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50">Vender mi Propiedad</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <a href="{{WA_URL}}" target="_blank" class="w-full py-3 bg-emerald-600 text-white font-semibold rounded-xl text-center flex items-center justify-center gap-2 shadow-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Hablar por WhatsApp
+                </a>
+                <a href="#contacto-propiedad" class="mobile-link w-full py-3 bg-brand-red text-white font-semibold rounded-xl text-center shadow-sm">
+                    Consultar por una Propiedad
+                </a>
+            </div>
+        </div>
+    </header>
+
+{{MAIN}}
+
+    <!-- Footer -->
+    <footer class="bg-brand-black text-slate-200 text-xs py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="space-y-4">
+                    <a href="/" class="inline-block group">
+                        <div class="overflow-hidden h-24 w-auto flex items-center justify-start group-hover:scale-105 transition-transform">
+                            <img src="https://cdn.shopify.com/s/files/1/0773/9683/6592/files/51b3a483-adfd-4e74-9a03-7843895f04e7.jpg?v=1784930965" 
+                                 alt="BG Administradora Inmobiliaria Logo" 
+                                 class="h-24 w-auto object-cover scale-125 transform rounded-xl shadow-md">
+                        </div>
+                    </a>
+                    <p class="text-slate-300 text-xs leading-relaxed">
+                        Administración profesional de condominios y edificios. Gestión transparente, segura y optimizada con Inteligencia Artificial y cumplimiento Ley 21.442.
+                    </p>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <p class="font-bold text-white text-xs uppercase tracking-wider mb-3">Navegación</p>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="/#servicios" class="text-slate-300 hover:text-white transition-colors">Servicios Principales</a></li>
+                        <li><a href="/#normativa" class="text-slate-300 hover:text-white transition-colors">Normativa Ley 21.442</a></li>
+                        <li><a href="/#diagnostico" class="text-slate-300 hover:text-white transition-colors">Evaluación de Cumplimiento</a></li>
+                        <li><a href="/#nosotros" class="text-slate-300 hover:text-white transition-colors">Certificaciones Profesionales</a></li>
+                        <li><a href="/propiedades" class="text-slate-300 hover:text-white transition-colors">Propiedades en Venta</a></li>
+                        <li><a href="/vender-mi-departamento" class="text-slate-300 hover:text-white transition-colors">Vender mi Propiedad</a></li>
+                        <li><a href="/#contacto" class="text-slate-300 hover:text-white transition-colors">Cotización Directa</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Legal & Standards -->
+                <div>
+                    <p class="font-bold text-white text-xs uppercase tracking-wider mb-3">Gestión e Innovación</p>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><span class="text-slate-200">• Ley 21.442 de Copropiedad</span></li>
+                        <li><span class="text-slate-200">• Certificación Acreditada de Edificios</span></li>
+                        <li><span class="text-slate-200">• Inteligencia Artificial Inmobiliaria</span></li>
+                        <li><span class="text-slate-200">• Sello Verde SEC & Pólizas Colectivas</span></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact details -->
+                <div>
+                    <p class="font-bold text-white text-xs uppercase tracking-wider mb-3">Canales Directos</p>
+                    <p class="text-xs text-white font-bold mb-1.5">Bárbara Gutiérrez</p>
+                    <p class="text-xs mb-1"><span class="text-slate-400">Comercial:</span> <a href="mailto:barbaragc@bgadministradora.cl" class="text-slate-200 hover:text-brand-red underline font-medium">barbaragc@bgadministradora.cl</a></p>
+                    <p class="text-xs mb-1"><span class="text-slate-400">Consultas:</span> <a href="mailto:hola@bgadministradora.cl" class="text-slate-200 hover:text-brand-red underline font-medium">hola@bgadministradora.cl</a></p>
+                    <p class="text-xs mb-1"><span class="text-slate-400">Proveedores:</span> <a href="mailto:contabilidad@bgadministradora.cl" class="text-slate-200 hover:text-brand-red underline font-medium">contabilidad@bgadministradora.cl</a></p>
+                    <p class="text-xs mt-2"><span class="text-slate-400">WhatsApp:</span> <a href="https://wa.me/56981749481" target="_blank" class="text-emerald-400 hover:underline font-bold">+56 9 8174 9481</a></p>
+                </div>
+
+            </div>
+
+            <!-- Bottom Sub-Footer with StrataFactory Branding -->
+            <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-300 gap-4">
+                <p class="text-slate-300 font-medium">© 2026 BG Administradora Inmobiliaria - www.bgadministradora.cl. Todos los derechos reservados.</p>
+                <div class="flex flex-wrap items-center justify-center sm:justify-end gap-6">
+                    <a href="https://www.stratafactory.cl" target="_blank" rel="noopener" class="flex items-center gap-2.5 text-slate-200 hover:text-white transition-colors group" title="Visitar StrataFactory">
+                        <span class="text-xs text-slate-300 font-semibold">Potenciado por:</span>
+                        <div class="bg-white px-3 py-1.5 rounded-lg shadow-sm flex items-center justify-center group-hover:opacity-95 transition-opacity">
+                            <img src="https://cdn.shopify.com/s/files/1/0773/9683/6592/files/ChatGPT_Image_24_jul_2026_07_30_05_p.m..png?v=1784938405" 
+                                 alt="StrataFactory Logo" 
+                                 class="h-8 w-auto object-contain">
+                        </div>
+                    </a>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/bg.administradora/" target="_blank" class="text-slate-300 hover:text-white transition-colors font-medium">Instagram</a>
+                        <a href="https://www.linkedin.com/in/b%C3%A1rbara-guti%C3%A9rrez-administradora-inmobiliaria-5ba131412" target="_blank" class="text-slate-300 hover:text-white transition-colors font-medium">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button for Instant Mobile UX -->
+    <a href="{{WA_URL}}" 
+       target="_blank" 
+       rel="noopener"
+       aria-label="Contactar por WhatsApp"
+       class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-110 focus:outline-none">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+    </script>
+{{PAGE_SCRIPTS}}
+    <!-- GA4: medición de conversiones (clics de contacto) -->
+    <script>
+    (function () {
+      function track(name, params) {
+        if (typeof gtag === 'function') {
+          params = params || {};
+          params.transport_type = 'beacon';
+          gtag('event', name, params);
+        }
+      }
+      window.bgTrack = track;
+      function zona(el) {
+        if (el.closest('header')) return 'header';
+        if (el.closest('footer')) return 'footer';
+        var s = el.closest('section[id]');
+        return s ? s.id : 'otro';
+      }
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href]');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var p = { link_location: zona(a), page_section: location.pathname };
+        if (href.indexOf('wa.me') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
+          track('contact_whatsapp', p);
+        } else if (href.indexOf('tel:') === 0) {
+          track('contact_phone', p);
+        } else if (href.indexOf('mailto:') === 0) {
+          p.email_area = href.replace('mailto:', '').split('@')[0].split('?')[0];
+          track('contact_email', p);
+        }
+      }, true);
+    })();
+    </script>
+</body>
+</html>
