@@ -248,6 +248,8 @@
                 <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-brand-red"></i> Cumplimiento Garantizado Ley 21.442</span>
                 <span class="hidden md:inline-block text-slate-600">|</span>
                 <span class="hidden md:flex items-center gap-1.5"><i class="fa-solid fa-brain text-brand-red"></i> Gestión Inteligente e Innovación IA</span>
+                <span class="hidden md:inline-block text-slate-600">|</span>
+                <a href="/vender-mi-departamento" class="flex items-center gap-1.5 text-white font-semibold hover:text-brand-red transition-colors"><i class="fa-solid fa-house-circle-check text-brand-red"></i> ¿Quieres vender tu propiedad?</a>
             </div>
             <div class="flex items-center space-x-4 text-xs font-medium">
                 <a href="mailto:barbaragc@bgadministradora.cl" class="hover:text-white transition-colors flex items-center gap-1">
@@ -315,6 +317,7 @@
             <a href="/vender-mi-departamento" aria-current="page" class="mobile-link block px-3 py-2 rounded-md font-medium text-brand-red bg-red-50">Vender mi Propiedad</a>
             <a href="/#nosotros" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50">Quiénes Somos</a>
             <a href="/#faq" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50">Preguntas Frecuentes</a>
+            <a href="/vender-mi-departamento" class="block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50">Vender mi Propiedad</a>
             <div class="pt-2 flex flex-col gap-2">
                 <a href="https://wa.me/56981749481?text=Hola%20B%C3%A1rbara,%20quiero%20vender%20mi%20propiedad" target="_blank" class="w-full py-3 bg-emerald-600 text-white font-semibold rounded-xl text-center flex items-center justify-center gap-2 shadow-sm">
                     <i class="fa-brands fa-whatsapp text-lg"></i> Hablar por WhatsApp
@@ -754,6 +757,7 @@
                         <li><a href="/#diagnostico" class="text-slate-300 hover:text-white transition-colors">Evaluación de Cumplimiento</a></li>
                         <li><a href="/#nosotros" class="text-slate-300 hover:text-white transition-colors">Certificaciones Profesionales</a></li>
                         <li><a href="/vender-mi-departamento" class="text-slate-300 hover:text-white transition-colors">Vender mi Propiedad</a></li>
+                        <li><a href="/vender-mi-departamento" class="text-slate-300 hover:text-white transition-colors">Vender mi Propiedad</a></li>
                         <li><a href="/#contacto" class="text-slate-300 hover:text-white transition-colors">Cotización Directa</a></li>
                     </ul>
                 </div>
@@ -825,11 +829,14 @@
         }
         // Abrir la pregunta al llegar desde una tarjeta de situación
         function abrirFaqDesdeHash() {
-            const el = location.hash && document.querySelector(location.hash + ' .faq-answer');
-            if (el && el.classList.contains('hidden')) toggleFaq(el.previousElementSibling);
+            const el = location.hash && location.hash.indexOf('#faq-') === 0 && document.querySelector(location.hash + ' .faq-answer');
+            if (!el) return;
+            if (el.classList.contains('hidden')) toggleFaq(el.previousElementSibling);
+            // Tailwind (CDN) reordena el layout al cargar: re-posicionar tras el render
+            setTimeout(() => document.querySelector(location.hash).scrollIntoView({ behavior: 'smooth', block: 'start' }), 350);
         }
         window.addEventListener('hashchange', abrirFaqDesdeHash);
-        document.addEventListener('DOMContentLoaded', abrirFaqDesdeHash);
+        window.addEventListener('load', abrirFaqDesdeHash);
 
         // Envío real vía FormSubmit (casilla barbaragc@ ya activada)
         async function handleVentaSubmit(event) {
