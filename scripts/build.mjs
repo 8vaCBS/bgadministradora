@@ -19,11 +19,25 @@ const esc = (v) => String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').
 const nf = new Intl.NumberFormat('es-CL');
 const precioTxt = (p) => {
   if (!p.precio) return 'Precio a consultar';
-  return p.moneda === 'CLP' ? `$ ${nf.format(p.precio)}` : `UF ${nf.format(p.precio)}`;
+  if (p.moneda === 'CLP') return `$ ${nf.format(Math.round(p.precio))}`;
+  const uf = Number.isInteger(p.precio) ? nf.format(p.precio)
+    : new Intl.NumberFormat('es-CL', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(p.precio);
+  return `UF ${uf}`;
 };
 const slugify = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
   .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80);
 const waLink = (msg) => `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+// Números al estilo chileno: punto = miles, coma = decimales ("5.200,50" → 5200.5; "70,8" → 70.8).
+// También acepta "70.8" (punto decimal) y números ya guardados como número.
+const parseNum = (v) => {
+  if (v === null || v === undefined || v === '') return null;
+  if (typeof v === 'number') return Number.isFinite(v) ? v : null;
+  let t = String(v).replace(/\s|\$|UF|m2|m²/gi, '');
+  if (t.includes(',')) t = t.replace(/\./g, '').replace(',', '.');
+  else if (/^\d{1,3}(\.\d{3})+$/.test(t)) t = t.replace(/\./g, '');
+  const n = Number(t);
+  return Number.isFinite(n) ? n : null;
+};
 // Acepta enlaces de YouTube: youtu.be/ID, watch?v=ID, /shorts/ID, /embed/ID, /live/ID
 const youtubeId = (url) => {
   if (!url) return null;
@@ -69,6 +83,11 @@ if (fs.existsSync(dir)) {
       p.fotos = (p.fotos || []).filter((x) => x && x.imagen);
       if (p.portada) p.fotos.unshift({ imagen: p.portada, texto: p.titulo });
       p.fecha = p.fecha || new Date().toISOString();
+      for (const k of ['precio', 'm2_utiles', 'm2_totales', 'm2_terreno', 'gastos_comunes', 'dormitorios', 'banos', 'estacionamientos', 'bodegas', 'anio']) {
+        const n = parseNum(p[k]);
+        if (p[k] !== undefined && p[k] !== null && p[k] !== '' && n === null) console.warn(`⚠ ${f}: "${k}" no es un número válido (${p[k]})`);
+        p[k] = n;
+      }
       p.url = `${SITE}/propiedades/${p.slug}`;
       fichas.push(p);
     } catch (err) {
