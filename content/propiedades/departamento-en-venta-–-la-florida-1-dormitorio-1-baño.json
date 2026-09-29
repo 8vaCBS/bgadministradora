@@ -43,15 +43,35 @@
     },
     {
       "imagen": "/assets/propiedades/img_5746.webp",
-      "texto": ""
+      "texto": "Cocina"
     },
     {
       "imagen": "/assets/propiedades/img_5730.webp",
-      "texto": ""
+      "texto": "Cocina"
     },
     {
       "imagen": "/assets/propiedades/img_5713.webp",
+      "texto": "Cocina"
+    },
+    {
+      "imagen": "/assets/propiedades/img_5738.webp",
+      "texto": "Living"
+    },
+    {
+      "imagen": "/assets/propiedades/img_5726.webp",
+      "texto": "Dormitorio"
+    },
+    {
+      "imagen": "/assets/propiedades/img_5721.webp",
+      "texto": "Dormitorio"
+    },
+    {
+      "imagen": "/assets/propiedades/img_5718.webp",
       "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_5724.webp",
+      "texto": "Baño"
     }
   ],
   "video": "",
