@@ -64,7 +64,7 @@ collections:
       - { label: "Operación", name: operacion, widget: select, options: [Venta, Arriendo], default: Venta }
       - { label: "Tipo", name: tipo, widget: select, options: [Departamento, Casa, Oficina, "Local comercial", Terreno, Parcela, "Estacionamiento / Bodega"], default: Departamento }
       - { label: "Comuna", name: comuna, widget: string, hint: "Ej: Ñuñoa" }
-      - { label: "Precio", name: precio, widget: number, value_type: float, min: 0, required: false, hint: "Solo números, sin puntos. Vacío = 'Precio a consultar'." }
+      - { label: "Precio", name: precio, widget: string, required: false, hint: "Ej: 5.200 o 5.200,50 (UF) · 250.000.000 (pesos). Coma para decimales. Vacío = 'Precio a consultar'.", pattern: ['^\s*\d{1,3}(\.\d{3})*(,\d{1,2})?\s*$|^\s*\d+([,.]\d{1,2})?\s*$', 'Solo números. Usa coma para los decimales. Ej: 70,8'] }
       - { label: "Moneda", name: moneda, widget: select, options: [UF, CLP], default: UF }
       # --- Fotos ---
       - { label: "Foto principal", name: portada, widget: image, required: false, hint: "La que se ve primero en el listado." }
@@ -86,12 +86,12 @@ collections:
       # --- Datos ---
       - { label: "Dormitorios", name: dormitorios, widget: number, value_type: int, min: 0, required: false }
       - { label: "Baños", name: banos, widget: number, value_type: int, min: 0, required: false }
-      - { label: "m² útiles", name: m2_utiles, widget: number, value_type: float, min: 0, required: false }
-      - { label: "m² totales", name: m2_totales, widget: number, value_type: float, min: 0, required: false }
-      - { label: "m² de terreno", name: m2_terreno, widget: number, value_type: float, min: 0, required: false, hint: "Solo casas, terrenos y parcelas." }
+      - { label: "m² útiles", name: m2_utiles, widget: string, required: false, hint: "Ej: 70,8", pattern: ['^\s*\d{1,3}(\.\d{3})*(,\d{1,2})?\s*$|^\s*\d+([,.]\d{1,2})?\s*$', 'Solo números. Usa coma para los decimales. Ej: 70,8'] }
+      - { label: "m² totales", name: m2_totales, widget: string, required: false, hint: "Ej: 78,5", pattern: ['^\s*\d{1,3}(\.\d{3})*(,\d{1,2})?\s*$|^\s*\d+([,.]\d{1,2})?\s*$', 'Solo números. Usa coma para los decimales. Ej: 70,8'] }
+      - { label: "m² de terreno", name: m2_terreno, widget: string, required: false, hint: "Solo casas, terrenos y parcelas. Ej: 250,5", pattern: ['^\s*\d{1,3}(\.\d{3})*(,\d{1,2})?\s*$|^\s*\d+([,.]\d{1,2})?\s*$', 'Solo números. Usa coma para los decimales. Ej: 70,8'] }
       - { label: "Estacionamientos", name: estacionamientos, widget: number, value_type: int, min: 0, required: false }
       - { label: "Bodegas", name: bodegas, widget: number, value_type: int, min: 0, required: false }
-      - { label: "Gastos comunes aprox. ($)", name: gastos_comunes, widget: number, value_type: int, min: 0, required: false }
+      - { label: "Gastos comunes aprox. ($)", name: gastos_comunes, widget: string, required: false, hint: "Ej: 95.000", pattern: ['^\s*\d{1,3}(\.\d{3})*(,\d{1,2})?\s*$|^\s*\d+([,.]\d{1,2})?\s*$', 'Solo números. Usa coma para los decimales. Ej: 70,8'] }
       - { label: "Sector o barrio", name: sector, widget: string, required: false, hint: "Opcional. Nunca la dirección exacta." }
       - { label: "Región", name: region, widget: select, options: ["Región Metropolitana", "Región de Valparaíso", "Región de O'Higgins", "Región de Coquimbo", "Otra"], default: "Región Metropolitana" }
       - { label: "Descripción", name: descripcion, widget: markdown, required: false, minimal: true, buttons: [bold, italic, bulleted-list, numbered-list], editor_components: [] }
