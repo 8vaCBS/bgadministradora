@@ -1,4 +1,7 @@
-# Panel de propiedades (Decap CMS). Bárbara entra en https://www.bgadministradora.cl/admin
+# Panel de propiedades (Sveltia CMS, compatible con celular).
+# Bárbara entra en https://www.bgadministradora.cl/admin
+app_title: Panel BG Administradora
+
 backend:
   name: github
   repo: 8vaCBS/bgadministradora
@@ -12,19 +15,31 @@ backend:
     uploadMedia: "Foto subida: {{path}}"
     deleteMedia: "Foto eliminada: {{path}}"
 
-locale: es
 site_url: https://www.bgadministradora.cl
 display_url: https://www.bgadministradora.cl/propiedades
 logo_url: https://cdn.shopify.com/s/files/1/0773/9683/6592/files/Diseno_sin_titulo_sin_fondo.png?v=1784933992
 
 media_folder: assets/propiedades
 public_folder: /assets/propiedades
+media_libraries:
+  default:
+    config:
+      max_file_size: 25000000
+      slugify_filename: true
+      # Las fotos del celular se achican y convierten a WebP antes de subirlas
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 2000
+          height: 2000
 
 collections:
   - name: propiedades
     label: Propiedades
     label_singular: Propiedad
-    description: "Cada propiedad publicada aparece en bgadministradora.cl/propiedades unos 2 minutos después de guardar."
+    icon: home
+    description: "Cada propiedad guardada aparece en bgadministradora.cl/propiedades en unos 2 minutos."
     folder: content/propiedades
     format: json
     extension: json
@@ -39,39 +54,44 @@ collections:
       - { label: Reservadas, field: estado, pattern: Reservada }
       - { label: Vendidas, field: estado, pattern: Vendida }
     fields:
-      - { label: "Título del aviso", name: titulo, widget: string, hint: "Ej: Departamento 2D 2B con terraza cerca del metro. No se puede cambiar la dirección web después de crear la propiedad." }
-      - { label: "Publicada en el sitio", name: publicado, widget: boolean, default: true, hint: "Desactívala para ocultarla sin borrarla." }
+      # --- Lo esencial ---
+      - { label: "Título del aviso", name: titulo, widget: string, hint: "Ej: Departamento 2D 2B con terraza cerca del metro" }
       - { label: "Estado", name: estado, widget: select, options: [Disponible, Reservada, Vendida, Arrendada], default: Disponible }
+      - { label: "Mostrar en el sitio", name: publicado, widget: boolean, default: true, hint: "Apágalo para ocultarla sin borrarla." }
       - { label: "Operación", name: operacion, widget: select, options: [Venta, Arriendo], default: Venta }
       - { label: "Tipo", name: tipo, widget: select, options: [Departamento, Casa, Oficina, "Local comercial", Terreno, Parcela, "Estacionamiento / Bodega"], default: Departamento }
       - { label: "Comuna", name: comuna, widget: string, hint: "Ej: Ñuñoa" }
-      - { label: "Sector o barrio", name: sector, widget: string, required: false, hint: "Opcional. Ej: Plaza Egaña. No escribas la dirección exacta." }
-      - { label: "Región", name: region, widget: select, options: ["Región Metropolitana", "Región de Valparaíso", "Región de O'Higgins", "Región de Coquimbo", "Otra"], default: "Región Metropolitana" }
-      - { label: "Precio", name: precio, widget: number, value_type: float, min: 0, required: false, hint: "Solo el número, sin puntos. Déjalo vacío para mostrar 'Precio a consultar'." }
+      - { label: "Precio", name: precio, widget: number, value_type: float, min: 0, required: false, hint: "Solo números, sin puntos. Vacío = 'Precio a consultar'." }
       - { label: "Moneda", name: moneda, widget: select, options: [UF, CLP], default: UF }
-      - { label: "Resumen corto (para Google)", name: resumen, widget: text, required: false, hint: "Opcional, máximo 160 caracteres. Si lo dejas vacío se arma solo." }
-      - { label: "Foto de portada", name: portada, widget: image, required: false, hint: "La primera foto que se ve en el listado." }
+      # --- Fotos ---
+      - { label: "Foto principal", name: portada, widget: image, required: false, hint: "La que se ve primero en el listado." }
       - label: "Más fotos"
         name: fotos
         widget: list
         required: false
         summary: "{{fields.texto}}"
+        hint: "Agrega una por una. Puedes cambiar el orden arrastrándolas."
         fields:
           - { label: Foto, name: imagen, widget: image }
-          - { label: "Descripción breve", name: texto, widget: string, required: false, hint: "Ej: Living comedor con salida a terraza" }
+          - { label: "¿Qué muestra? (opcional)", name: texto, widget: string, required: false, hint: "Ej: Cocina" }
+      # --- Datos ---
       - { label: "Dormitorios", name: dormitorios, widget: number, value_type: int, min: 0, required: false }
       - { label: "Baños", name: banos, widget: number, value_type: int, min: 0, required: false }
       - { label: "m² útiles", name: m2_utiles, widget: number, value_type: float, min: 0, required: false }
       - { label: "m² totales", name: m2_totales, widget: number, value_type: float, min: 0, required: false }
-      - { label: "m² de terreno", name: m2_terreno, widget: number, value_type: float, min: 0, required: false, hint: "Para casas, terrenos y parcelas." }
+      - { label: "m² de terreno", name: m2_terreno, widget: number, value_type: float, min: 0, required: false, hint: "Solo casas, terrenos y parcelas." }
       - { label: "Estacionamientos", name: estacionamientos, widget: number, value_type: int, min: 0, required: false }
       - { label: "Bodegas", name: bodegas, widget: number, value_type: int, min: 0, required: false }
       - { label: "Gastos comunes aprox. ($)", name: gastos_comunes, widget: number, value_type: int, min: 0, required: false }
+      - { label: "Sector o barrio", name: sector, widget: string, required: false, hint: "Opcional. Nunca la dirección exacta." }
+      - { label: "Región", name: region, widget: select, options: ["Región Metropolitana", "Región de Valparaíso", "Región de O'Higgins", "Región de Coquimbo", "Otra"], default: "Región Metropolitana" }
+      - { label: "Descripción", name: descripcion, widget: markdown, required: false, minimal: true, buttons: [bold, italic, bulleted-list, numbered-list], editor_components: [] }
+      - { label: "Características", name: caracteristicas, widget: list, required: false, hint: "Ej: Piscina, Quincho, Conserjería 24/7" }
+      # --- Opcional ---
       - { label: "Año de construcción", name: anio, widget: number, value_type: int, required: false }
       - { label: "Piso", name: piso, widget: string, required: false }
       - { label: "Orientación", name: orientacion, widget: string, required: false, hint: "Ej: Nor-oriente" }
-      - { label: "Descripción", name: descripcion, widget: markdown, required: false, buttons: [bold, italic, bulleted-list, numbered-list, heading-three], editor_components: [], modes: [rich_text] }
-      - { label: "Características", name: caracteristicas, widget: list, required: false, hint: "Una por línea. Ej: Piscina, Quincho, Conserjería 24/7" }
-      - { label: "Destacar primero en el listado", name: destacado, widget: boolean, default: false, required: false }
-      - { label: "Fecha de publicación", name: fecha, widget: datetime, required: false, date_format: "DD-MM-YYYY", time_format: false }
+      - { label: "Resumen para Google (opcional)", name: resumen, widget: text, required: false, hint: "Máximo 160 caracteres. Si lo dejas vacío se arma solo." }
+      - { label: "Mostrar primero en el listado", name: destacado, widget: boolean, default: false, required: false }
+      - { label: "Fecha de publicación", name: fecha, widget: datetime, type: date, auto_now: [create], required: false }
       - { label: "Ejemplo (no se publica)", name: ejemplo, widget: hidden, default: false }
