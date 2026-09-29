@@ -11,7 +11,15 @@
   "fotos": [
     {
       "imagen": "/assets/propiedades/img_5838.webp",
-      "texto": ""
+      "texto": "Piscina"
+    },
+    {
+      "imagen": "/assets/propiedades/img_5843.webp",
+      "texto": "Quincho"
+    },
+    {
+      "imagen": "/assets/propiedades/img_5846.webp",
+      "texto": "Quincho"
     }
   ],
   "video": "",
