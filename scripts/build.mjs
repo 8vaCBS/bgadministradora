@@ -24,6 +24,12 @@ const precioTxt = (p) => {
 const slugify = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
   .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80);
 const waLink = (msg) => `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+// Acepta enlaces de YouTube: youtu.be/ID, watch?v=ID, /shorts/ID, /embed/ID, /live/ID
+const youtubeId = (url) => {
+  if (!url) return null;
+  const m = String(url).trim().match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/|v\/))([A-Za-z0-9_-]{11})/);
+  return m ? m[1] : null;
+};
 const jsonld = (obj) => JSON.stringify(obj).replace(/</g, '\\u003c');
 const ESTADOS = { 'Disponible': 0, 'Reservada': 1, 'Vendida': 2, 'Arrendada': 2 };
 const badgeClase = (e) => ({
@@ -249,6 +255,28 @@ for (const p of fichas) {
         function cambiarFoto(d) { verFoto(fotoActual + d); }
     </script>` : '';
   const caracteristicas = (p.caracteristicas || []).filter(Boolean);
+  const ytId = youtubeId(p.video);
+  if (p.video && !ytId) console.warn(`⚠ Enlace de video no reconocido en ${p.slug}: ${p.video}`);
+  const videoHtml = ytId ? `
+              <div>
+                <h2 class="font-heading text-xl font-bold text-slate-900 mb-3">Video</h2>
+                <button type="button" id="video-facade" data-yt="${ytId}" onclick="cargarVideo(this)" aria-label="Reproducir video de la propiedad" class="relative block w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 group">
+                  <img src="https://i.ytimg.com/vi/${ytId}/hqdefault.jpg" alt="Video de ${esc(p.titulo)}" loading="lazy" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                  <span class="absolute inset-0 flex items-center justify-center"><span class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-brand-red text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-play text-2xl sm:text-3xl ml-1"></i></span></span>
+                </button>
+              </div>` : '';
+  const videoJs = ytId ? `    <script>
+        function cargarVideo(btn) {
+            const f = document.createElement('iframe');
+            f.src = 'https://www.youtube-nocookie.com/embed/' + btn.dataset.yt + '?autoplay=1&rel=0&playsinline=1';
+            f.title = 'Video de la propiedad';
+            f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+            f.allowFullscreen = true;
+            f.className = 'w-full aspect-video rounded-2xl';
+            btn.replaceWith(f);
+            if (window.bgTrack) window.bgTrack('video_play', { propiedad: document.title.slice(0, 90) });
+        }
+    </script>` : '';
   const otras = fichas.filter((o) => o !== p && o.estado !== 'Vendida').slice(0, 3);
   const main = `    <main class="flex-grow">
       <section class="bg-slate-50 py-8 sm:py-12">
@@ -257,6 +285,7 @@ for (const p of fichas) {
           <div class="grid lg:grid-cols-12 gap-8">
             <div class="lg:col-span-8 space-y-8">
               ${galeria}
+              ${videoHtml}
               <div>
                 <p class="text-xs font-bold text-brand-red uppercase tracking-wider">${esc(p.tipo || 'Propiedad')} ${opVerbo(p)} · ${esc([p.sector, p.comuna].filter(Boolean).join(', '))}</p>
                 <h1 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">${esc(p.titulo)}</h1>
@@ -299,8 +328,11 @@ for (const p of fichas) {
     { '@type': 'RealEstateListing', '@id': `${p.url}#listing`, url: p.url, name: p.titulo, description: desc,
       datePosted: p.fecha, image: p.imgs.map((i) => SITE + i.l), offers: offer, about: inmueble, inLanguage: 'es-CL' },
     breadcrumbLd([['Inicio', `${SITE}/`], ['Propiedades', `${SITE}/propiedades`], [p.titulo, p.url]]) ] };
+  if (ytId) ld['@graph'].push({ '@type': 'VideoObject', '@id': `${p.url}#video`, name: `Video: ${p.titulo}`, description: desc,
+    thumbnailUrl: `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg`, uploadDate: p.fecha,
+    embedUrl: `https://www.youtube-nocookie.com/embed/${ytId}`, contentUrl: `https://www.youtube.com/watch?v=${ytId}` });
   write(`propiedades/${p.slug}/index.html`, render({ title: titulo, desc, canonical: p.url, og: first ? SITE + first.og : undefined,
-    robots: p.ejemplo ? 'noindex, nofollow' : undefined, ld, main, wa: waLink(waMsg), scripts: fotosJs + '\n' + FORM_JS }));
+    robots: p.ejemplo ? 'noindex, nofollow' : undefined, ld, main, wa: waLink(waMsg), scripts: fotosJs + '\n' + videoJs + '\n' + FORM_JS }));
 }
 
 // ---------- 6. listado /propiedades ----------
