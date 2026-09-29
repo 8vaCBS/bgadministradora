@@ -15,6 +15,9 @@ backend:
     uploadMedia: "Foto subida: {{path}}"
     deleteMedia: "Foto eliminada: {{path}}"
 
+editor:
+  preview: false
+
 site_url: https://www.bgadministradora.cl
 display_url: https://www.bgadministradora.cl/propiedades
 logo_url: https://cdn.shopify.com/s/files/1/0773/9683/6592/files/Diseno_sin_titulo_sin_fondo.png?v=1784933992
