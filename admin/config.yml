@@ -77,6 +77,12 @@ collections:
         fields:
           - { label: Foto, name: imagen, widget: image }
           - { label: "¿Qué muestra? (opcional)", name: texto, widget: string, required: false, hint: "Ej: Cocina" }
+      - label: "Video (enlace de YouTube)"
+        name: video
+        widget: string
+        required: false
+        hint: "Opcional. En YouTube toca Compartir → Copiar vínculo y pégalo aquí."
+        pattern: ['^\s*(https?://)?(www\.|m\.)?(youtube\.com|youtu\.be)/\S+\s*$', "Pega un enlace de YouTube, por ejemplo https://youtu.be/…"]
       # --- Datos ---
       - { label: "Dormitorios", name: dormitorios, widget: number, value_type: int, min: 0, required: false }
       - { label: "Baños", name: banos, widget: number, value_type: int, min: 0, required: false }
