@@ -5,7 +5,7 @@
   "operacion": "Venta",
   "tipo": "Departamento",
   "comuna": "La Florida",
-  "precio": 2800,
+  "precio": "2800",
   "moneda": "UF",
   "portada": "/assets/propiedades/img_5863.webp",
   "fotos": [
@@ -32,17 +32,37 @@
     {
       "imagen": "/assets/propiedades/img_5769.webp",
       "texto": "PET spa"
+    },
+    {
+      "imagen": "/assets/propiedades/img_5763.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_5747.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_5746.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_5730.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_5713.webp",
+      "texto": ""
     }
   ],
   "video": "",
   "dormitorios": 1,
   "banos": 1,
-  "m2_utiles": 34,
-  "m2_totales": 34,
-  "m2_terreno": null,
+  "m2_utiles": "34",
+  "m2_totales": "34",
+  "m2_terreno": "",
   "estacionamientos": null,
   "bodegas": 1,
-  "gastos_comunes": 60000,
+  "gastos_comunes": "60000",
   "sector": "La Florida",
   "region": "Región Metropolitana",
   "descripcion": "Moderno departamento **completamente amoblado**, ubicado en un excelente sector de la comuna de La Florida, con muy buena conectividad y cercano a importantes vías como **Av. Vicuña Mackenna, Av. Américo Vespucio y Av. Departamental**.\n\nSu ubicación permite acceder fácilmente a locomoción colectiva, comercio, supermercados, servicios y estaciones de Metro.\n\n**Características del departamento:**\n\n• Living-comedor amoblado con salida a balcón\n• Cocina americana amoblada y equipada\n• 1 dormitorio con closet\n• 1 baño completo\n• 1 bodega\n• Sin estacionamiento\n\n**El edificio cuenta con excelentes espacios comunes:**\n\n• Piscina\n• Gimnasio\n• Quinchos\n• Salón gourmet\n• Cowork\n• Bicicleteros\n• Pet Spa\n• Estacionamientos de visitas\n• Conserjería y seguridad 24/7\n\nUna excelente oportunidad para **vivir o invertir**, gracias a su ubicación, conectividad, distribución funcional y completo equipamiento.\n\nIdeal para quienes buscan una primera vivienda o una propiedad con potencial de arriendo en una comuna con amplia oferta de servicios y conectividad.\n\n**¡Contáctanos para más información y agenda tu visita!**",
