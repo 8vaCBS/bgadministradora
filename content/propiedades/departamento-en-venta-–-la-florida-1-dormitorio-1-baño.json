@@ -5,7 +5,7 @@
   "operacion": "Venta",
   "tipo": "Departamento",
   "comuna": "La Florida",
-  "precio": "2800",
+  "precio": "2.800",
   "moneda": "UF",
   "portada": "/assets/propiedades/img_5863.webp",
   "fotos": [
@@ -72,6 +72,42 @@
     {
       "imagen": "/assets/propiedades/img_5724.webp",
       "texto": "Baño"
+    },
+    {
+      "imagen": "/assets/propiedades/img_5760.webp",
+      "texto": "Gym 1"
+    },
+    {
+      "imagen": "/assets/propiedades/img_5757.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_5756.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_5815.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_5796.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_5798.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_5817.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_5808.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_5827.webp",
+      "texto": ""
     }
   ],
   "video": "",
