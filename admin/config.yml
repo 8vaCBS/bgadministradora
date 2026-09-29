@@ -19,10 +19,6 @@ logo_url: https://cdn.shopify.com/s/files/1/0773/9683/6592/files/Diseno_sin_titu
 
 media_folder: assets/propiedades
 public_folder: /assets/propiedades
-media_library:
-  name: default
-  config:
-    max_file_size: 12000000
 
 collections:
   - name: propiedades
