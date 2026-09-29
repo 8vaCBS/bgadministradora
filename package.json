@@ -1,0 +1,14 @@
+{
+  "name": "bgadministradora",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sitio BG Administradora Inmobiliaria + panel de propiedades",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "marked": "^14.1.4",
+    "sharp": "^0.33.5"
+  }
+}
