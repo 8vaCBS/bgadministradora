@@ -84,6 +84,15 @@
       },
       "about": {
         "@id": "https://www.bgadministradora.cl/vender-mi-departamento#servicio"
+      },
+      "dateModified": "2026-09-28",
+      "author": {
+        "@type": "Person",
+        "@id": "https://www.bgadministradora.cl/#barbara",
+        "name": "Bárbara Gutiérrez Cortes"
+      },
+      "publisher": {
+        "@id": "https://www.bgadministradora.cl/#empresa"
       }
     },
     {
@@ -249,7 +258,7 @@
                 <span class="hidden md:inline-block text-slate-600">|</span>
                 <span class="hidden md:flex items-center gap-1.5"><i class="fa-solid fa-brain text-brand-red"></i> Gestión Inteligente e Innovación IA</span>
                 <span class="hidden md:inline-block text-slate-600">|</span>
-                <a href="/vender-mi-departamento" class="flex items-center gap-1.5 text-white font-semibold hover:text-brand-red transition-colors"><i class="fa-solid fa-house-circle-check text-brand-red"></i> ¿Quieres vender tu propiedad?</a>
+                <a href="/vender-mi-departamento" class="hidden md:flex items-center gap-1.5 text-white font-semibold hover:text-brand-red transition-colors"><i class="fa-solid fa-house-circle-check text-brand-red"></i> ¿Quieres vender tu propiedad?</a>
             </div>
             <div class="flex items-center space-x-4 text-xs font-medium">
                 <a href="mailto:barbaragc@bgadministradora.cl" class="hover:text-white transition-colors flex items-center gap-1">
@@ -331,7 +340,7 @@
 
     <main class="flex-grow">
         <!-- Hero -->
-        <section class="relative bg-brand-black text-white py-16 lg:py-24 overflow-hidden">
+        <section class="relative bg-brand-black text-white py-10 sm:py-16 lg:py-24 overflow-hidden">
             <div class="absolute inset-0 opacity-20 pointer-events-none">
                 <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-brand-red blur-3xl"></div>
                 <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-slate-700 blur-2xl"></div>
@@ -352,7 +361,15 @@
                         <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
                             Vender una propiedad no es solo publicarla. Es fijar un precio realista, tener los documentos en regla y resolver a tiempo lo que puede frenar la venta: un <strong class="text-white font-semibold">crédito hipotecario vigente</strong>, un <strong class="text-white font-semibold">subsidio</strong>, una <strong class="text-white font-semibold">herencia</strong> o una <strong class="text-white font-semibold">deuda de gastos comunes</strong>.
                         </p>
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-left">
+                        <div class="pt-1 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="#formulario-venta" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-brand-red hover:bg-brand-darkred text-white font-bold px-7 py-3.5 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 text-sm">
+                                <i class="fa-solid fa-house-circle-check"></i> Quiero vender mi propiedad
+                            </a>
+                            <a href="https://wa.me/56981749481?text=Hola%20B%C3%A1rbara,%20quiero%20vender%20mi%20propiedad%20y%20me%20gustar%C3%ADa%20recibir%20asesor%C3%ADa" target="_blank" rel="noopener" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-600 font-bold px-6 py-3.5 rounded-xl transition-all text-sm">
+                                <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i> +56 9 8174 9481
+                            </a>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 text-left">
                             <div class="bg-slate-800/60 border border-slate-700/50 p-3 rounded-xl">
                                 <i class="fa-solid fa-chart-line text-brand-red mb-1"></i>
                                 <p class="text-xs font-bold text-white">Precio Realista</p>
@@ -373,14 +390,6 @@
                                 <p class="text-xs font-bold text-white">Hasta la Firma</p>
                                 <p class="text-[11px] text-slate-400">Promesa, escritura y CBR</p>
                             </div>
-                        </div>
-                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                            <a href="#formulario-venta" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-brand-red hover:bg-brand-darkred text-white font-bold px-7 py-3.5 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 text-sm">
-                                <i class="fa-solid fa-house-circle-check"></i> Quiero vender mi propiedad
-                            </a>
-                            <a href="https://wa.me/56981749481?text=Hola%20B%C3%A1rbara,%20quiero%20vender%20mi%20propiedad%20y%20me%20gustar%C3%ADa%20recibir%20asesor%C3%ADa" target="_blank" rel="noopener" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-600 font-bold px-6 py-3.5 rounded-xl transition-all text-sm">
-                                <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i> +56 9 8174 9481
-                            </a>
                         </div>
                     </div>
                     <div class="lg:col-span-5">
@@ -652,7 +661,10 @@
                         </div>
                     </div>
                 </div>
-                <p class="text-[11px] text-slate-500 mt-6 text-center leading-relaxed">Información general de referencia. No reemplaza la asesoría legal ni tributaria para tu caso particular.</p>
+                <div class="text-[11px] text-slate-500 mt-6 text-center leading-relaxed space-y-1">
+                    <p>Información general de referencia, revisada por Bárbara Gutiérrez, BG Administradora Inmobiliaria. Actualizada en septiembre de 2026. No reemplaza la asesoría legal ni tributaria para tu caso particular.</p>
+                    <p>Fuentes: <a href="https://www.sii.cl/preguntas_frecuentes/declaracion_renta/001_140_7212.htm" target="_blank" rel="noopener" class="underline hover:text-brand-red">SII – venta de bienes raíces</a> · <a href="https://www.chileatiende.gob.cl/fichas/81634-alzamiento-de-prohibiciones-serviu-por-plazo-vencido" target="_blank" rel="noopener" class="underline hover:text-brand-red">ChileAtiende – alzamiento de prohibiciones SERVIU</a> · <a href="https://www.chileatiende.gob.cl/fichas/457-certificado-de-los-registros-de-hipotecas-gravamenes-y-prohibiciones-de-una-propiedad-gp" target="_blank" rel="noopener" class="underline hover:text-brand-red">ChileAtiende – certificado de hipotecas y gravámenes</a> · <a href="https://www.bcn.cl/leychile/navegar?idNorma=1174663" target="_blank" rel="noopener" class="underline hover:text-brand-red">Ley 21.442 (BCN)</a></p>
+                </div>
             </div>
         </section>
 
@@ -756,7 +768,6 @@
                         <li><a href="/#normativa" class="text-slate-300 hover:text-white transition-colors">Normativa Ley 21.442</a></li>
                         <li><a href="/#diagnostico" class="text-slate-300 hover:text-white transition-colors">Evaluación de Cumplimiento</a></li>
                         <li><a href="/#nosotros" class="text-slate-300 hover:text-white transition-colors">Certificaciones Profesionales</a></li>
-                        <li><a href="/vender-mi-departamento" class="text-slate-300 hover:text-white transition-colors">Vender mi Propiedad</a></li>
                         <li><a href="/vender-mi-departamento" class="text-slate-300 hover:text-white transition-colors">Vender mi Propiedad</a></li>
                         <li><a href="/#contacto" class="text-slate-300 hover:text-white transition-colors">Cotización Directa</a></li>
                     </ul>
