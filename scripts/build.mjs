@@ -301,7 +301,7 @@ for (const p of fichas) {
           <button type="button" onclick="cambiarFoto(1)" aria-label="Foto siguiente" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 text-slate-800 shadow flex items-center justify-center"><i class="fa-solid fa-chevron-right"></i></button>
           <span id="foto-contador" class="absolute bottom-3 right-3 text-[11px] font-bold bg-black/60 text-white px-2 py-0.5 rounded-full">1 / ${p.imgs.length}</span>` : ''}
         </div>
-        ${p.imgs.length > 1 ? `<div class="flex gap-2 overflow-x-auto pb-1">${p.imgs.map((im, i) => `<button type="button" onclick="verFoto(${i})" class="miniatura flex-shrink-0 w-20 h-16 sm:w-24 sm:h-20 rounded-lg overflow-hidden border-2 ${i ? 'border-transparent' : 'border-brand-red'}" aria-label="Ver foto ${i + 1}"><img src="${im.s}" alt="" loading="lazy" class="w-full h-full object-cover"></button>`).join('')}</div>` : ''}
+        ${p.imgs.length > 1 ? `<div class="flex gap-2 overflow-x-auto pb-1 max-w-full overscroll-x-contain snap-x">${p.imgs.map((im, i) => `<button type="button" onclick="verFoto(${i})" class="miniatura flex-shrink-0 w-20 h-16 sm:w-24 sm:h-20 rounded-lg overflow-hidden border-2 ${i ? 'border-transparent' : 'border-brand-red'}" aria-label="Ver foto ${i + 1}"><img src="${im.s}" alt="" loading="lazy" class="w-full h-full object-cover"></button>`).join('')}</div>` : ''}
       </div>` : '';
   const fotosJs = p.imgs.length > 1 ? `    <script>
         const FOTOS = ${JSON.stringify(p.imgs.map((i) => ({ s: i.s, l: i.l, alt: i.alt })))};
@@ -314,6 +314,19 @@ for (const p of fichas) {
             document.querySelectorAll('.miniatura').forEach((b, j) => { b.classList.toggle('border-brand-red', j === fotoActual); b.classList.toggle('border-transparent', j !== fotoActual); });
         }
         function cambiarFoto(d) { verFoto(fotoActual + d); }
+        // Deslizar con el dedo para cambiar de foto (celular)
+        (function () {
+            const z = document.getElementById('foto-principal').parentElement; let x0 = null, y0 = null;
+            z.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+            z.addEventListener('touchend', e => {
+                if (x0 === null) return;
+                const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+                if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) cambiarFoto(dx < 0 ? 1 : -1);
+                x0 = null;
+            }, { passive: true });
+        })();
+        // Mantener visible la miniatura activa
+        const _ver = verFoto; verFoto = function (i) { _ver(i); const m = document.querySelectorAll('.miniatura')[fotoActual]; if (m) m.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' }); };
     </script>` : '';
   const caracteristicas = (p.caracteristicas || []).filter(Boolean);
   const ytId = youtubeId(p.video);
@@ -339,12 +352,12 @@ for (const p of fichas) {
         }
     </script>` : '';
   const otras = fichas.filter((o) => o !== p && o.estado !== 'Vendida').slice(0, 3);
-  const main = `    <main class="flex-grow">
+  const main = `    <main class="flex-grow overflow-x-clip">
       <section class="bg-slate-50 py-8 sm:py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav aria-label="Ruta de navegación" class="text-xs text-slate-500 mb-5"><a href="/" class="hover:text-brand-red">Inicio</a> <span class="mx-1">/</span> <a href="/propiedades" class="hover:text-brand-red">Propiedades</a> <span class="mx-1">/</span> <span class="text-slate-800">${esc(p.titulo)}</span></nav>
-          <div class="grid lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-8 space-y-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-8 space-y-8 min-w-0">
               ${galeria}
               ${videoHtml}
               <div>
@@ -358,7 +371,7 @@ for (const p of fichas) {
               ${caracteristicas.length ? `<div><h2 class="font-heading text-xl font-bold text-slate-900 mb-3">Características</h2><ul class="grid sm:grid-cols-2 gap-2 text-sm text-slate-700">${caracteristicas.map((c) => `<li class="flex gap-2"><i class="fa-solid fa-check text-brand-red mt-1"></i>${esc(c)}</li>`).join('')}</ul></div>` : ''}
               <div class="bg-white border border-slate-200 rounded-2xl p-5 text-sm text-slate-700"><p class="font-heading font-bold text-slate-900 mb-1"><i class="fa-solid fa-location-dot text-brand-red mr-1.5"></i>Ubicación</p><p>${esc([p.sector, p.comuna, p.region].filter(Boolean).join(', ') || 'Consultar')}. La dirección exacta se entrega al coordinar la visita.</p></div>
             </div>
-            <aside class="lg:col-span-4">
+            <aside class="lg:col-span-4 min-w-0">
               <div id="contacto-propiedad" class="lg:sticky lg:top-28 bg-white border border-slate-200 rounded-2xl shadow-sm p-6 space-y-4 scroll-mt-28">
                 <div class="hidden lg:block"><p class="text-xs text-slate-500">${p.operacion === 'Arriendo' ? 'Arriendo mensual' : 'Precio de venta'}</p><p class="font-heading text-3xl font-extrabold text-slate-900">${esc(precioTxt(p))}</p></div>
                 <a href="${esc(waLink(waMsg))}" target="_blank" rel="noopener" class="w-full inline-flex justify-center items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-sm shadow-md"><i class="fa-brands fa-whatsapp text-lg"></i> Consultar por WhatsApp</a>
@@ -401,7 +414,7 @@ for (const p of fichas) {
   const tipos = [...new Set(fichas.map((p) => p.tipo).filter(Boolean))].sort();
   const comunas = [...new Set(fichas.map((p) => p.comuna).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es'));
   const sel = 'px-4 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-800 bg-white focus:ring-2 focus:ring-brand-red focus:outline-none';
-  const main = `    <main class="flex-grow">
+  const main = `    <main class="flex-grow overflow-x-clip">
       <section class="relative bg-brand-black text-white py-12 sm:py-16 overflow-hidden">
         <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-brand-red blur-3xl opacity-20 pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
