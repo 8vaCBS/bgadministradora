@@ -58,6 +58,8 @@ function copyDir(src, dst) {
   for (const e of fs.readdirSync(src, { withFileTypes: true })) {
     if (src === ROOT && (IGNORE.has(e.name) || e.name.startsWith('.'))) continue;
     const s = path.join(src, e.name), d = path.join(dst, e.name);
+    // Las fotos originales de propiedades no se publican: solo las versiones con marca de agua
+    if (!e.isDirectory() && src === path.join(ROOT, 'assets', 'propiedades')) continue;
     if (e.isDirectory()) copyDir(s, d); else fs.copyFileSync(s, d);
   }
 }
@@ -102,6 +104,44 @@ console.log(`Propiedades publicadas: ${fichas.length}`);
 
 // ---------- 3. optimizar fotos ----------
 const imgCache = new Map();
+// ---------- marca de agua ----------
+// Logo de BG sobre una placa blanca semitransparente, abajo a la derecha.
+// Se usa assets/brand/logo-bg.png si existe; si no, se descarga el logo del sitio al compilar.
+// Si no hay logo disponible, las fotos se publican sin marca (y se avisa en el log).
+const LOGO_URL = 'https://cdn.shopify.com/s/files/1/0773/9683/6592/files/Diseno_sin_titulo_sin_fondo.png?v=1784933992&width=800';
+let logoBuf = null;
+{
+  const local = path.join(ROOT, 'assets', 'brand', 'logo-bg.png');
+  try {
+    if (fs.existsSync(local)) logoBuf = fs.readFileSync(local);
+    else {
+      const r = await fetch(LOGO_URL);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      logoBuf = Buffer.from(await r.arrayBuffer());
+    }
+    logoBuf = await sharp(logoBuf).trim().png().toBuffer();
+  } catch (err) {
+    console.warn(`⚠ Sin logo para la marca de agua: ${err.message}`);
+    logoBuf = null;
+  }
+}
+async function conMarca(pipeline) {
+  const { data, info } = await pipeline.toBuffer({ resolveWithObject: true });
+  if (!logoBuf) return sharp(data);
+  const W = info.width, H = info.height;
+  const logoW = Math.max(90, Math.round(Math.min(W, H * 1.5) * 0.14));
+  const logo = await sharp(logoBuf).resize({ width: logoW }).png().toBuffer({ resolveWithObject: true });
+  const pad = Math.round(logoW * 0.08);
+  const bw = logo.info.width + pad * 2, bh = logo.info.height + pad * 2;
+  const margin = Math.round(Math.min(W, H) * 0.035);
+  const left = W - bw - margin, top = H - bh - margin;
+  const placa = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${bw}" height="${bh}"><rect width="${bw}" height="${bh}" rx="${Math.round(bh * 0.12)}" fill="#ffffff" fill-opacity="0.72"/></svg>`);
+  return sharp(data).composite([
+    { input: placa, left, top },
+    { input: logo.data, left: left + pad, top: top + pad },
+  ]);
+}
+
 async function foto(ruta) {
   if (!ruta) return null;
   if (imgCache.has(ruta)) return imgCache.get(ruta);
@@ -116,12 +156,14 @@ async function foto(ruta) {
     const ratio = (meta.orientation >= 5 ? meta.width / meta.height : meta.height / meta.width) || 0.75;
     const out = {};
     for (const w of [800, 1600]) {
-      const file = `${base}-${w}.webp`;
-      await sharp(src).rotate().resize({ width: w, withoutEnlargement: true }).webp({ quality: 78 }).toFile(path.join(outDir, file));
+      const file = `${base}-${w}-wm.webp`;
+      const img2 = await conMarca(sharp(src).rotate().resize({ width: w, withoutEnlargement: true }));
+      await img2.webp({ quality: 78 }).toFile(path.join(outDir, file));
       out[w] = `/assets/propiedades/web/${file}`;
     }
-    const og = `${base}-og.jpg`;
-    await sharp(src).rotate().resize(1200, 630, { fit: 'cover' }).jpeg({ quality: 80 }).toFile(path.join(outDir, og));
+    const og = `${base}-og-wm.jpg`;
+    const ogImg = await conMarca(sharp(src).rotate().resize(1200, 630, { fit: 'cover' }));
+    await ogImg.jpeg({ quality: 80 }).toFile(path.join(outDir, og));
     const r = { s: out[800], l: out[1600], og: `/assets/propiedades/web/${og}`, w: 800, h: Math.round(800 * ratio) };
     imgCache.set(ruta, r);
     return r;
