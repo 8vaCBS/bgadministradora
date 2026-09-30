@@ -294,8 +294,8 @@ for (const p of fichas) {
   const [first, ...rest] = p.imgs;
   const galeria = p.imgs.length ? `
       <div class="space-y-3">
-        <div class="relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/3]">
-          <img id="foto-principal" src="${first.l}" srcset="${first.s} 800w, ${first.l} 1600w" sizes="(min-width:1024px) 60vw, 100vw" alt="${esc(first.alt)}" width="${first.w}" height="${first.h}" fetchpriority="high" class="w-full h-full object-cover">
+        <div class="relative rounded-2xl overflow-hidden bg-slate-900 aspect-[4/3]">
+          <img id="foto-principal" src="${first.l}" srcset="${first.s} 800w, ${first.l} 1600w" sizes="(min-width:1024px) 60vw, 100vw" alt="${esc(first.alt)}" width="${first.w}" height="${first.h}" fetchpriority="high" class="w-full h-full object-contain">
           <span class="absolute top-4 left-4 text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow ${badgeClase(p.estado)}">${esc(p.estado)}</span>
           ${p.imgs.length > 1 ? `<button type="button" onclick="cambiarFoto(-1)" aria-label="Foto anterior" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 text-slate-800 shadow flex items-center justify-center"><i class="fa-solid fa-chevron-left"></i></button>
           <button type="button" onclick="cambiarFoto(1)" aria-label="Foto siguiente" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 text-slate-800 shadow flex items-center justify-center"><i class="fa-solid fa-chevron-right"></i></button>
