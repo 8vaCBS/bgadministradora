@@ -1,0 +1,37 @@
+{
+  "titulo": "Vendo Departamento 2D 1B en Rancagua",
+  "estado": "Disponible",
+  "publicado": true,
+  "operacion": "Venta",
+  "tipo": "Departamento",
+  "comuna": "Rancagua",
+  "precio": "1.339",
+  "moneda": "UF",
+  "portada": "/assets/propiedades/26508c80-8c67-43d0-960f-1fad9044e371.webp",
+  "fotos": [
+    {
+      "imagen": "/assets/propiedades/064c69c9-8947-4715-bd2a-1161c1518ced.webp",
+      "texto": ""
+    }
+  ],
+  "video": "",
+  "dormitorios": 2,
+  "banos": 1,
+  "m2_utiles": "52,31",
+  "m2_totales": "52,31",
+  "m2_terreno": "",
+  "estacionamientos": null,
+  "bodegas": null,
+  "gastos_comunes": "50.000",
+  "sector": "El Dorado",
+  "region": "Región de O'Higgins",
+  "descripcion": "**DEPARTAMENTO EN VENTA – RANCAGUA | EL DORADO**\n\n **Excelente oportunidad de inversión a solo 1.339 UF**\n\nDepartamento de **52,31 m²**, ubicado en **El Dorado, Rancagua**, en un entorno tranquilo y residencial, ideal tanto para **familias como para inversionistas**.\n\n **2 dormitorios**\n **1 baño**\n **52,31 m²**\nAmbiente tranquilo y familiar. Excelente alternativa de inversión\n**Se acepta subsidio habitacional**\nPrecio: **1.339 UF**\n\n📩 **Consultas y visitas:**\n**Bárbara Gutiérrez | Asesora Inmobiliaria**\n✉️ barbaragc@bgadministradora.cl",
+  "caracteristicas": [],
+  "anio": null,
+  "piso": "",
+  "orientacion": "",
+  "resumen": "DEPARTAMENTO EN VENTA – RANCAGUA | EL DORADO Departamento de 52,31 m², ubicado en El Dorado, Rancagua, en un entorno tranquilo y residencial, ideal tanto para familias como para inversionistas.",
+  "destacado": false,
+  "fecha": "2026-10-05",
+  "ejemplo": false
+}
