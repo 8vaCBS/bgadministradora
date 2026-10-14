@@ -1,0 +1,41 @@
+{
+  "titulo": "DEPARTAMENTO EN VENTA EN SANTIAGO",
+  "estado": "Disponible",
+  "publicado": true,
+  "operacion": "Venta",
+  "tipo": "Departamento",
+  "comuna": "Santiago",
+  "precio": "2900",
+  "moneda": "UF",
+  "portada": "/assets/propiedades/30634c6e-cc29-4225-80f7-0f0b23e7889b.webp",
+  "fotos": [
+    {
+      "imagen": "/assets/propiedades/img_6562.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/2e66a063-6e72-4fcf-ad65-70f27e1daf0e.webp",
+      "texto": ""
+    }
+  ],
+  "video": "",
+  "dormitorios": 1,
+  "banos": 1,
+  "m2_utiles": "33",
+  "m2_totales": "",
+  "m2_terreno": "",
+  "estacionamientos": null,
+  "bodegas": null,
+  "gastos_comunes": "80000",
+  "sector": "",
+  "region": "Región Metropolitana",
+  "descripcion": "**DEPARTAMENTO EN VENTA EN SANTIAGO**\n\n**Excelente conectividad y gran oportunidad de inversión**\n\nOportunidad ideal para inversionistas que buscan una propiedad con potencial de arriendo en una ubicación estratégica de Santiago, con excelente conectividad y cercanía al Metro.\n\nTambién es una excelente alternativa para una pareja o estudiante que busque vivir cerca del transporte público y disfrutar de las ventajas de la vida urbana.\n\n**Características del departamento**\n\n- **Precio de venta:** UF 2.900\n- **Superficie total informada:** 33 m²\n- **Terraza:** 4,29 m²\n- **Distribución:** 1 dormitorio y 1 baño\n- **Piso:** 8\n- **Orientación:** Poniente\n- **Año de construcción:** 2024\n- **Gastos comunes:** $80.000 aprox.\n- **Contribuciones:** Exento ($0 informado)\n\n**Equipamiento del edificio**\n\n- Gimnasio\n- Sala de estar\n- Conserjería y seguridad 24/7\n\n**Una excelente oportunidad para invertir**\n\nSu ubicación, cercanía al Metro y distribución funcional hacen de este departamento una alternativa atractiva para quienes buscan invertir en una propiedad para arriendo o adquirir su primera vivienda.\n\n**Agenda tu visita y conoce esta oportunidad de inversión en Santiago.**",
+  "caracteristicas": [],
+  "anio": null,
+  "piso": "",
+  "orientacion": "",
+  "resumen": "DEPARTAMENTO EN VENTA EN SANTIAGO\n\nExcelente conectividad y gran oportunidad de inversión\n\nOportunidad ideal para inversionistas que buscan una propiedad con potencial de arriendo en una ubicación estratégica de Santiago, con excelente conectividad y cercanía al Metro.\n\nTambién es una excelente alternativa para una pareja o estudiante que busque vivir cerca del transporte público y disfrutar de las ventajas de la vida urbana.\n\nCaracterísticas del departamento\n\n* Precio de venta: UF 2.900\n* Superficie total informada: 33 m²\n* Terraza: 4,29 m²\n* Distribución: 1 dormitorio y 1 baño\n* Piso: 8\n* Orientación: Poniente\n* Año de construcción: 2024\n* Gastos comunes: $80.000 aprox.\n\nEquipamiento del edificio\n\n* Gimnasio\n* Sala de estar\n* Conserjería y seguridad 24/7\n\nUna excelente oportunidad para invertir\n\nSu ubicación, cercanía al Metro y distribución funcional hacen de este departamento una alternativa atractiva para quienes buscan invertir en una propiedad para arriendo o adquirir su primera vivienda.\n\nAgenda tu visita y conoce esta oportunidad de inversión en Santiago.",
+  "destacado": false,
+  "fecha": "2026-10-14",
+  "ejemplo": false
+}
