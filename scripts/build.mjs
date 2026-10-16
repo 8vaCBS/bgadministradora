@@ -531,4 +531,23 @@ for (const p of fichas) {
     fs.appendFileSync(ll, txt + '\n');
   }
 }
+// ---------- 9. registro de contactos (CRM en Google Sheet) ----------
+// Inserta assets/bg-leads.js en todas las páginas publicadas (excepto /admin).
+{
+  const tag = '<script src="/assets/bg-leads.js" defer></script>';
+  let n = 0;
+  const recorrer = (d) => {
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      const f = path.join(d, e.name);
+      if (e.isDirectory()) { if (f !== path.join(DIST, 'admin')) recorrer(f); continue; }
+      if (!e.name.endsWith('.html')) continue;
+      const html = fs.readFileSync(f, 'utf8');
+      if (html.includes('bg-leads.js') || !html.includes('</body>')) continue;
+      fs.writeFileSync(f, html.replace(/<\/body>(?![\s\S]*<\/body>)/, `${tag}\n</body>`));
+      n++;
+    }
+  };
+  if (fs.existsSync(path.join(DIST, 'assets', 'bg-leads.js'))) recorrer(DIST);
+  console.log(`Registro de contactos insertado en ${n} páginas`);
+}
 console.log('✔ Sitio generado en /dist');
