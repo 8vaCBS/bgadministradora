@@ -331,24 +331,45 @@ for (const p of fichas) {
   const caracteristicas = (p.caracteristicas || []).filter(Boolean);
   const ytId = youtubeId(p.video);
   if (p.video && !ytId) console.warn(`⚠ Enlace de video no reconocido en ${p.slug}: ${p.video}`);
+  const esShort = /\/shorts\//i.test(String(p.video || ''));
+  const marco = esShort ? 'aspect-[9/16] max-w-xs mx-auto' : 'aspect-video';
+  const ytUrl = `https://www.youtube.com/watch?v=${ytId}`;
   const videoHtml = ytId ? `
               <div>
                 <h2 class="font-heading text-xl font-bold text-slate-900 mb-3">Video</h2>
-                <button type="button" id="video-facade" data-yt="${ytId}" onclick="cargarVideo(this)" aria-label="Reproducir video de la propiedad" class="relative block w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 group">
-                  <img src="https://i.ytimg.com/vi/${ytId}/hqdefault.jpg" alt="Video de ${esc(p.titulo)}" loading="lazy" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
-                  <span class="absolute inset-0 flex items-center justify-center"><span class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-brand-red text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-play text-2xl sm:text-3xl ml-1"></i></span></span>
-                </button>
+                <div id="video-box" class="relative w-full ${marco} rounded-2xl overflow-hidden bg-slate-900">
+                  <button type="button" id="video-facade" data-yt="${ytId}" onclick="cargarVideo(this)" aria-label="Reproducir video de la propiedad" class="absolute inset-0 block w-full h-full group">
+                    <img src="https://i.ytimg.com/vi/${ytId}/hqdefault.jpg" alt="Video de ${esc(p.titulo)}" loading="lazy" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                    <span class="absolute inset-0 flex items-center justify-center"><span class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-brand-red text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-play text-2xl sm:text-3xl ml-1"></i></span></span>
+                  </button>
+                </div>
+                <p class="text-xs text-slate-500 mt-2 text-center"><a href="${ytUrl}" target="_blank" rel="noopener" class="underline hover:text-brand-red">Ver el video en YouTube</a></p>
               </div>` : '';
+  // Si YouTube no permite reproducir el video en sitios externos (ej. reclamo de derechos por la música),
+  // se reemplaza el reproductor por un aviso propio con botón a YouTube, en vez del error de YouTube.
   const videoJs = ytId ? `    <script>
+        function avisoVideo(box, id, codigo) {
+            box.innerHTML = '<div class="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center bg-slate-900">'
+              + '<i class="fa-brands fa-youtube text-4xl text-brand-red"></i>'
+              + '<p class="text-white text-sm font-semibold">Este video se ve directamente en YouTube</p>'
+              + '<a href="https://www.youtube.com/watch?v=' + id + '" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-white text-slate-900 font-bold text-xs py-2.5 px-4 rounded-xl"><i class="fa-brands fa-youtube text-brand-red"></i> Ver en YouTube</a></div>';
+            if (window.bgTrack) window.bgTrack('video_error', { propiedad: document.title.slice(0, 90), codigo: String(codigo) });
+        }
         function cargarVideo(btn) {
-            const f = document.createElement('iframe');
-            f.src = 'https://www.youtube-nocookie.com/embed/' + btn.dataset.yt + '?autoplay=1&rel=0&playsinline=1';
-            f.title = 'Video de la propiedad';
-            f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-            f.allowFullscreen = true;
-            f.className = 'w-full aspect-video rounded-2xl';
-            btn.replaceWith(f);
+            const id = btn.dataset.yt, box = document.getElementById('video-box');
+            const div = document.createElement('div'); div.id = 'yt-player'; div.className = 'absolute inset-0 w-full h-full';
+            btn.replaceWith(div);
             if (window.bgTrack) window.bgTrack('video_play', { propiedad: document.title.slice(0, 90) });
+            const crear = () => new YT.Player('yt-player', {
+                videoId: id, host: 'https://www.youtube-nocookie.com', width: '100%', height: '100%',
+                playerVars: { autoplay: 1, rel: 0, playsinline: 1 },
+                events: { onError: (e) => avisoVideo(box, id, e.data) }
+            });
+            if (window.YT && window.YT.Player) return crear();
+            window.onYouTubeIframeAPIReady = crear;
+            const s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api';
+            s.onerror = () => avisoVideo(box, id, 'api');
+            document.head.appendChild(s);
         }
     </script>` : '';
   const otras = fichas.filter((o) => o !== p && o.estado !== 'Vendida').slice(0, 3);
