@@ -1,6 +1,5 @@
 /* BG Administradora — registro de contactos en Google Sheet (CRM)
- * 1) Clic en WhatsApp: ventana opcional (nombre + teléfono) antes de abrir WhatsApp.
- *    Siempre hay un enlace "Ir directo a WhatsApp sin dejar datos".
+ * 1) Clic en WhatsApp: ventana con nombre + teléfono (obligatorios) antes de abrir WhatsApp.
  * 2) Formularios del sitio: cada envío se copia también al Sheet.
  * Si ENDPOINT está vacío, este archivo no hace nada (el sitio funciona igual que antes).
  */
@@ -84,7 +83,6 @@
     + '.bgw input:focus{outline:2px solid #C81D25;border-color:transparent}'
     + '.bgw .bgw-ok{width:100%;border:0;border-radius:12px;background:#059669;color:#fff;font-weight:800;font-size:14px;padding:12px;cursor:pointer;display:flex;gap:8px;align-items:center;justify-content:center}'
     + '.bgw .bgw-ok:hover{background:#047857}'
-    + '.bgw .bgw-dir{display:block;width:100%;margin-top:12px;background:none;border:0;color:#64748b;font-size:12px;text-decoration:underline;cursor:pointer}'
     + '.bgw .bgw-x{position:absolute;top:10px;right:12px;background:none;border:0;font-size:22px;color:#94a3b8;cursor:pointer;line-height:1}'
     + '.bgw small{display:block;font-size:11px;color:#94a3b8;margin:-4px 0 14px}';
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
@@ -122,7 +120,6 @@
       + '<small>Usaremos tus datos solo para responder tu consulta.</small>'
       + '<button type="submit" class="bgw-ok"><i class="fa-brands fa-whatsapp"></i> Continuar a WhatsApp</button>'
       + '</form>'
-      + '<button type="button" class="bgw-dir">Ir directo a WhatsApp sin dejar datos</button>'
       + '</div>';
     document.body.appendChild(bg);
     var form = bg.querySelector('form'), n = form.nombre, t = form.telefono;
@@ -132,10 +129,6 @@
     document.addEventListener('keydown', esc);
     bg.addEventListener('click', function (e) { if (e.target === bg) { cerrar(); track('whatsapp_form_close', base); } });
     bg.querySelector('.bgw-x').onclick = function () { cerrar(); track('whatsapp_form_close', base); };
-    bg.querySelector('.bgw-dir').onclick = function () {
-      base.con_datos = 'no'; track('contact_whatsapp', base);
-      cerrar(); abrir(a, href);
-    };
     form.onsubmit = function (e) {
       e.preventDefault();
       var nom = n.value.trim(), tel = t.value.trim(), digitos = tel.replace(/\D/g, '');
