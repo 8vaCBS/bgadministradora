@@ -1,0 +1,49 @@
+{
+  "titulo": "Venta de Departamentos",
+  "estado": "Disponible",
+  "publicado": true,
+  "operacion": "Venta",
+  "tipo": "Departamento",
+  "comuna": "Santiago",
+  "precio": "2190",
+  "moneda": "UF",
+  "portada": "/assets/propiedades/img_7156.webp",
+  "fotos": [
+    {
+      "imagen": "/assets/propiedades/img_7157.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_7158.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_7159.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_7160.webp",
+      "texto": ""
+    }
+  ],
+  "video": "",
+  "dormitorios": 1,
+  "banos": 1,
+  "m2_utiles": "",
+  "m2_totales": "",
+  "m2_terreno": "",
+  "estacionamientos": null,
+  "bodegas": null,
+  "gastos_comunes": "",
+  "sector": "Santa Ana",
+  "region": "Región Metropolitana",
+  "descripcion": "Centro Santa Ana es el último lanzamiento de AJ Urbana.\n\nEdificio tipo hotel con operación profesional centralizada de la mano de Assetplan.\n\nVive o invierte a futuro con las mejores condiciones del mercado, bajo el modelo Only Investor de AJ Urbana, con Arriendo Garantizado, bono de amoblamiento y un departamento full equipado para tener una unidad hotelera lista para entrar al mercado.\n\n**Entrega 2029**",
+  "caracteristicas": [],
+  "anio": null,
+  "piso": "",
+  "orientacion": "",
+  "resumen": "Centro Santa Ana es el último lanzamiento de AJ Urbana.\n\nEdificio tipo hotel con operación profesional centralizada de la mano de Assetplan.\n\nVive o invierte a futuro con las mejores condiciones del mercado, bajo el modelo Only Investor de AJ Urbana, con Arriendo Garantizado, bono de amoblamiento y un departamento full equipado para tener una unidad hotelera lista para entrar al mercado.\n\nEntrega 2029",
+  "destacado": false,
+  "fecha": "2026-10-23",
+  "ejemplo": false
+}
