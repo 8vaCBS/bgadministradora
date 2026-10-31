@@ -1,12 +1,12 @@
 {
-  "titulo": "Departamento en venta – Metro Mirador | 1 dormitorio + 1 baño",
-  "estado": "Disponible",
+  "titulo": "Arriendo Departamento  – Metro Mirador | 1 dormitorio + 1 baño",
+  "estado": "Arrendada",
   "publicado": true,
-  "operacion": "Venta",
+  "operacion": "Arriendo",
   "tipo": "Departamento",
   "comuna": "La Florida",
-  "precio": "2.700",
-  "moneda": "UF",
+  "precio": "450000",
+  "moneda": "CLP",
   "portada": "/assets/propiedades/img_5863.webp",
   "fotos": [
     {
