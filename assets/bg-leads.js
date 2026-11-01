@@ -113,16 +113,17 @@
     bg.innerHTML = '<div class="bgw" role="dialog" aria-modal="true" aria-labelledby="bgw-t">'
       + '<button type="button" class="bgw-x" aria-label="Cerrar">&times;</button>'
       + '<h2 id="bgw-t">Antes de abrir WhatsApp</h2>'
-      + '<p>Déjanos tu nombre y teléfono para responderte más rápido.</p>'
+      + '<p>Déjanos tu nombre, teléfono y correo para responderte más rápido.</p>'
       + '<form novalidate>'
       + '<label for="bgw-n">Nombre</label><input id="bgw-n" name="nombre" autocomplete="name" required placeholder="Ej: Juan Pérez">'
       + '<label for="bgw-t2">Teléfono</label><input id="bgw-t2" name="telefono" type="tel" autocomplete="tel" required placeholder="+56 9 1234 5678">'
+      + '<label for="bgw-e">Correo electrónico</label><input id="bgw-e" name="email" type="email" autocomplete="email" required placeholder="ejemplo@correo.cl">'
       + '<small>Usaremos tus datos solo para responder tu consulta.</small>'
       + '<button type="submit" class="bgw-ok"><i class="fa-brands fa-whatsapp"></i> Continuar a WhatsApp</button>'
       + '</form>'
       + '</div>';
     document.body.appendChild(bg);
-    var form = bg.querySelector('form'), n = form.nombre, t = form.telefono;
+    var form = bg.querySelector('form'), n = form.nombre, t = form.telefono, m = form.email;
     setTimeout(function () { n.focus(); }, 50);
     function cerrar() { document.removeEventListener('keydown', esc); bg.remove(); }
     function esc(e) { if (e.key === 'Escape') { cerrar(); track('whatsapp_form_close', base); } }
@@ -131,13 +132,15 @@
     bg.querySelector('.bgw-x').onclick = function () { cerrar(); track('whatsapp_form_close', base); };
     form.onsubmit = function (e) {
       e.preventDefault();
-      var nom = n.value.trim(), tel = t.value.trim(), digitos = tel.replace(/\D/g, '');
+      var nom = n.value.trim(), tel = t.value.trim(), digitos = tel.replace(/\D/g, ''), mail = m.value.trim(), mailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail);
       n.style.borderColor = nom.length < 2 ? '#C81D25' : '';
       t.style.borderColor = digitos.length < 8 ? '#C81D25' : '';
+      m.style.borderColor = mailOk ? '' : '#C81D25';
       if (nom.length < 2) return n.focus();
       if (digitos.length < 8) return t.focus();
-      ss.set(SS_DATOS, { nombre: nom, telefono: tel });
-      enviar({ origen: 'WhatsApp', nombre: nom, telefono: tel, interes: propiedadActual(), mensaje: (function () { try { return new URL(href).searchParams.get('text') || ''; } catch (x) { return ''; } })() });
+      if (!mailOk) return m.focus();
+      ss.set(SS_DATOS, { nombre: nom, telefono: tel, email: mail });
+      enviar({ origen: 'WhatsApp', nombre: nom, telefono: tel, email: mail, interes: propiedadActual(), mensaje: (function () { try { return new URL(href).searchParams.get('text') || ''; } catch (x) { return ''; } })() });
       base.con_datos = 'si'; track('contact_whatsapp', base);
       cerrar(); abrir(a, conNombre(href, nom));
     };
@@ -154,7 +157,7 @@
     if (href.indexOf('wa.me') === -1 && href.indexOf('api.whatsapp.com') === -1) return;
     e.preventDefault(); e.stopPropagation();
     var previo = ss.get(SS_DATOS);
-    if (previo && previo.nombre) { // ya dejó sus datos en esta visita: directo
+    if (previo && previo.nombre && previo.email) { // ya dejó sus datos en esta visita: directo
       var p = { link_location: zona(a), page_section: location.pathname, con_datos: 'previo' };
       track('contact_whatsapp', p);
       abrir(a, conNombre(a.href, previo.nombre));
