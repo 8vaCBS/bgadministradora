@@ -1,0 +1,81 @@
+{
+  "titulo": "Casa en venta en Chicureo",
+  "estado": "Disponible",
+  "publicado": true,
+  "operacion": "Venta",
+  "tipo": "Casa",
+  "comuna": "Colina",
+  "precio": "9.000",
+  "moneda": "UF",
+  "portada": "/assets/propiedades/6f279772-71e4-4a72-9ca0-b76d62f8431d.webp",
+  "fotos": [
+    {
+      "imagen": "/assets/propiedades/c3a7c4d7-5f26-4296-b69b-30f05e366965.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/d21bfdca-d34c-42f8-b25a-bcdeadc02eac.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/a94e6249-1be5-4865-80a7-d6e4c4751aa6.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/32c83c7d-6df3-4cd8-a4cb-6178a3444df1.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/1c2d899c-f99a-4951-863d-3c18c61c1562.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/d0ceca40-21b8-42e7-86a3-3144def6f28e.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/355b295b-bb82-4472-8138-8e863f4932c2.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/435e747a-6ca7-45fd-9b39-b87b1a66f5ee.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/02b868db-7cd9-4a41-9485-b43ec95e59c8.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_7870.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_7873.webp",
+      "texto": ""
+    },
+    {
+      "imagen": "/assets/propiedades/img_7875.webp",
+      "texto": ""
+    }
+  ],
+  "video": "",
+  "dormitorios": null,
+  "banos": null,
+  "m2_utiles": "",
+  "m2_totales": "",
+  "m2_terreno": "",
+  "estacionamientos": null,
+  "bodegas": null,
+  "gastos_comunes": "",
+  "sector": "",
+  "region": "Región Metropolitana",
+  "descripcion": "Casa en venta en Chicureo | 3D + 4B | Piscina privada | Seguridad 24/7 | 9.000 UF\n\n¡Vive la experiencia de disfrutar Chicureo en un entorno residencial seguro, tranquilo y pensado para la vida familiar!\n\nSe vende hermosa casa aislada ubicada en Condominio Kaiken Santa Elena.\n\nCon solo 5 años de construcción, esta propiedad destaca por su excelente estado de conservación, mantención impecable y documentación al día. Ideal para familias que buscan comodidad, privacidad y calidad de vida.\n\nCARACTERÍSTICAS GENERALES\n\n● Superficie útil: 154 m².\n\n● 3 dormitorios.\n\n● 4 baños.\n\n● Sala de estar familiar.\n\n● Casa aislada.\n\n● Amplia suite principal de 28 m².\n\n● 2 walk-in closets.\n\n● Cocina full gourmet completamente equipada.\n\n● Logia interior.\n\n● Bodega de invierno.\n\nDISTRIBUCIÓN Y EQUIPAMIENTO\n\nCocina full gourmet\n\n● Cocina completamente equipada.\n\n● Cocina encimera.\n\n● Horno empotrado.\n\n● Campana extractora.\n\n● Cubiertas de cuarzo.\n\n● Diseño moderno y funcional.\n\nSuite principal\n\n● Amplios espacios.\n\n● Dos walk-in closets.\n\n● Baño moderno y luminoso.\n\n● Doble vanitorio y shower door.\n\nEQUIPAMIENTO Y EXTERIORES\n\n● Piscina privada.\n\n● Pérgola bioclimática.\n\n● Sistema de riego automático.\n\n● Sistema de alarma.\n\n● Cámaras de seguridad.\n\n● Persianas exteriores.\n\n● Casa aislada que brinda mayor privacidad.\n\n● Condominio con seguridad 24/7.\n\nESPACIOS COMUNES Y VIDA FAMILIAR\n\nEl condominio ofrece espacios para disfrutar al aire libre:\n\n● Mini canchas de fútbol.\n\n● Áreas de juegos infantiles.\n\n● Espacios recreativos para niños.\n\n● Zonas destinadas al deporte y actividades familiares.\n\nUBICACIÓN Y CONECTIVIDAD\n\nUbicada en Chicureo Norte, sector Santa Elena, con cercanía a strip centers, centros comerciales, supermercados y servicios.\n\nUn entorno residencial que combina tranquilidad, seguridad y comodidad para la vida cotidiana.\n\nVALORES\n\n● Precio de venta: 9.000 UF.\n\n● Gastos comunes: $150.000 mensuales.\n\n¡AGENDA TU VISITA!\n\nUna excelente oportunidad para adquirir una casa familiar, impecablemente mantenida, con piscina privada, pérgola bioclimática y equipamiento pensado para disfrutar cada espacio.\n\nContáctanos para solicitar más información y coordinar una visita.",
+  "caracteristicas": [],
+  "anio": null,
+  "piso": "",
+  "orientacion": "",
+  "resumen": "Casa en venta en Chicureo | 3D + 4B | Piscina privada | Seguridad 24/7 | 9.000 UF",
+  "destacado": false,
+  "fecha": "2026-11-13",
+  "ejemplo": false
+}
